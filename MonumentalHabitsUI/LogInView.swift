@@ -29,29 +29,33 @@ struct LogInView: View {
                 
                 VStack {
                     Spacer()
-                    
                     Text("WELCOME TO")
+                        .padding(.top)
                         .font(.system(size: 30))
                         .font(.largeTitle.bold())
                     Text("MONUMENTAL HABITS")
                         .font(.system(size: 30))
                         .font(.largeTitle.bold())
-                    
-                    LogInButton(image: "Google", text: "Continue with Google", isSystem: true) {
+                    VStack {
+                        LogInButton(image: "Google", text: "Continue with Google", isSystem: true) {
+                        }
+                        LogInButton(image: "Facebook", text: "Continue with FaceBook", isSystem: true) {
+                        }
+                        
                     }
-                    LogInButton(image: "Facebook", text: "Continue with FaceBook", isSystem: true) {
-                    }
-                    
-                    ZStack {
+                  
                         VStack(spacing: 10) {
                             Text("Log in with email")
                                 .font(.system(size: 16))
                                 .padding(.top)
                             Divider()
                             
-                            CustomTextField(image: "massege", plaseHolder: "Email", text: $model.email)
-                            
-                            CustomTextField(image: "lock", plaseHolder: "Password", text: $model.password)
+                            VStack {
+                                CustomTextField(image: "massege", plaseHolder: "Email", text: $model.email)
+                                
+                                CustomTextField(image: "lock", plaseHolder: "Password", text: $model.password)
+                            }
+                            .padding(.top)
                             
                             Button(action: {}) {
                                 Text("Login")
@@ -80,12 +84,12 @@ struct LogInView: View {
                                 }
                             }
                             .padding(.bottom)
+                            
                         }
                         .background(.white)
                         .cornerRadius(10)
                         .padding(.top,10)
-                        .padding(.bottom,0)
-                    }
+                    
                 }
                 .ignoresSafeArea()
             }
