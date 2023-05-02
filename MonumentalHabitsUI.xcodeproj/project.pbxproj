@@ -13,6 +13,11 @@
 		4667D37D29FD129F0080F1BF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4667D37C29FD129F0080F1BF /* FirebaseAuth */; };
 		4667D37F29FD13C00080F1BF /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4667D37E29FD13C00080F1BF /* ModelData.swift */; };
 		469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BB5AF29FC1B8D00CF40CD /* ResetPasswordView.swift */; };
+		46A8DC4E29FFCEF6005AAA29 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC4D29FFCEF6005AAA29 /* BaseView.swift */; };
+		46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */; };
+		46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */; };
+		46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5329FFF1A2005AAA29 /* Home.swift */; };
+		46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */; };
 		46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE3D0C29FBEEB200125DDE /* SignUpView.swift */; };
 		46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */; };
 		46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE329FA88DE006F6047 /* LogInView.swift */; };
@@ -25,6 +30,11 @@
 		4667D37529FD11840080F1BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4667D37E29FD13C00080F1BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		469BB5AF29FC1B8D00CF40CD /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		46A8DC4D29FFCEF6005AAA29 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
+		46A8DC5329FFF1A2005AAA29 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabits.swift; sourceTree = "<group>"; };
 		46BE3D0C29FBEEB200125DDE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		46C70CDE29FA88DE006F6047 /* MonumentalHabitsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonumentalHabitsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentalHabitsUIApp.swift; sourceTree = "<group>"; };
@@ -74,6 +84,51 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		46A8DC4829FFCDE5005AAA29 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4667D38029FD13D40080F1BF /* View */,
+				4667D38129FD13F00080F1BF /* ViewModel */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		46A8DC4929FFCDF9005AAA29 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				46A8DC4A29FFCEAF005AAA29 /* Model */,
+				46A8DC4C29FFCED1005AAA29 /* View */,
+				46A8DC4B29FFCEB4005AAA29 /* ViewModel */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		46A8DC4A29FFCEAF005AAA29 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46A8DC4B29FFCEB4005AAA29 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		46A8DC4C29FFCED1005AAA29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46A8DC4D29FFCEF6005AAA29 /* BaseView.swift */,
+				46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */,
+				46A8DC5329FFF1A2005AAA29 /* Home.swift */,
+				46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		46C70CD529FA88DE006F6047 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				4667D38229FD140F0080F1BF /* App */,
-				4667D38029FD13D40080F1BF /* View */,
-				4667D38129FD13F00080F1BF /* ViewModel */,
+				46A8DC4829FFCDE5005AAA29 /* Auth */,
+				46A8DC4929FFCDF9005AAA29 /* BaseView */,
 				46C70CE729FA88DF006F6047 /* Preview Content */,
 				46C70CEF29FA9478006F6047 /* Exstension.swift */,
 				4667D37529FD11840080F1BF /* GoogleService-Info.plist */,
@@ -193,8 +248,13 @@
 			files = (
 				46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */,
 				46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */,
+				46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */,
 				469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */,
 				46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */,
+				46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */,
+				46A8DC4E29FFCEF6005AAA29 /* BaseView.swift in Sources */,
+				46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */,
+				46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */,
 				46C70CF029FA9478006F6047 /* Exstension.swift in Sources */,
 				4667D37F29FD13C00080F1BF /* ModelData.swift in Sources */,
 			);
