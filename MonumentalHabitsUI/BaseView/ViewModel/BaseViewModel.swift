@@ -26,6 +26,8 @@ class BaseViewModel: ObservableObject {
     @Published var isConnected = false
     @Published var showSheet = false
     
+    // AddReminder Button
+    @Published var isAddReminder = false
     
 }
 

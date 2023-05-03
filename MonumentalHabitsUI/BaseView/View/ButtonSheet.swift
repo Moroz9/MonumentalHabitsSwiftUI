@@ -13,24 +13,24 @@ struct ButtonSheet: View {
     var onChangeMode: ()-> Void
     
     var body: some View {
-        
-            
-            
-        VStack(spacing: 10) {
-            
-            let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
-            
-            LazyVGrid(columns: columns, spacing: 10) {
+  
+        ZStack {
+           
+            VStack(spacing: 10) {
                 
-                ForEach(server){ notification in
+                let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
+                
+                LazyVGrid(columns: columns, spacing: 10) {
                     
-                    notificationView(server: notification)
+                    ForEach(server){ notification in
+                        
+                        notificationView(server: notification)
+                    }
                 }
-            }
-            // Reminder Button
+                // Reminder Button
                 HStack {
                     
-                    Button { } label: {
+                    Button {serverData.isAddReminder.toggle() } label: {
                         Text("Add Reminder")
                             .fontWeight(.bold)
                             .foregroundColor(Color(hex: 0x573353))
@@ -46,34 +46,54 @@ struct ButtonSheet: View {
                     .frame(width: 20,height: 20)
                     .padding(.horizontal,20)
                     .offset(y: 5)
-                   
+                    
                 }.padding(.top)
+                
+                
+            }
+//            .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+            .padding(.bottom,30)
+            .padding(.horizontal)
+            .padding(.top, 20)
+            .background(Color.white)
+            .cornerRadius (25)
             
-      
+            
+            VStack {
+                AddReminderButton(baseData: serverData).offset(y: serverData.isAddReminder ? 0 : UIScreen.main.bounds.height)
+
+            }.background((serverData.isAddReminder ? Color.black.opacity (0.1) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
+                serverData.isAddReminder.toggle()
+            })
+            .edgesIgnoringSafeArea(.bottom)
         }
-        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 20)
-        .padding(.horizontal)
-        .padding(.top, 20)
-        .background(Color.white)
-        .cornerRadius (25)
-        
-        
     }
     
     @ViewBuilder
-    
+    // Create view
     func notificationView(server: Server)-> some View {
      
         VStack {
             Text(server.time)
+                .foregroundColor(isOne ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
+                .fontWeight(.bold)
             
             VStack {
                // Toggle
                 ZStack {
                     //Background
                     Capsule()
-                        .fill(isOne ? Color(hex: 0xFFF3E9 ).opacity(0.3) : Color(hex: 0xC8C1C8).opacity(0.3))
-                        .frame(width: 50,height: 30)
+                        .fill(isOne ? Color(hex: 0x573353).opacity(0.3) : Color(hex: 0xFDA758).opacity(0.3))
+                        .frame(width: 55,height: 34)
+                        Text("on")
+                        .font(.system(size: 12))
+                            .foregroundColor(.black)
+                            .padding(.trailing,20)
+                                 
+                         Text("off")
+                        .foregroundColor(.black)
+                        .font(.system(size: 12))
+                        .padding(.leading,20)
                     
                     HStack {
                         
@@ -81,8 +101,8 @@ struct ButtonSheet: View {
                             Spacer()
                         }
                         Circle()
-                            .fill(isOne ? Color(hex: 0xFDA758 ) : Color(hex: 0x573353))
-                            .frame(width: 30,height: 30)
+                            .fill(isOne ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
+                            .frame(width: 30,height: 25)
                             .padding(.horizontal,3)
                             .onTapGesture {
                                 withAnimation(.spring()) {
@@ -91,7 +111,6 @@ struct ButtonSheet: View {
                                 }
                             }
                             .gesture(
-                            
                                 DragGesture().onEnded({ value in
                                     if value.translation.width > 30 {
                                         //Dark mode
@@ -108,9 +127,7 @@ struct ButtonSheet: View {
                                             onChangeMode()
                                         }
                                     }
-                                    
                                 })
-                            
                             )
                         if isOne {
                             
@@ -120,19 +137,11 @@ struct ButtonSheet: View {
                     .frame(width: 60)
                     
                 }
-               
             }
-            .padding()
-            .background(self.isOne ? Color(hex: 0xFDA758).opacity(0.3) : Color(hex: 0x573353).opacity(0.3))
-            .cornerRadius(10)
-        
+            .padding(.top,-5)
         }
-        
-    }
-}
-
-struct ButtonSheet_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNewHabits()
+        .frame(width: 115,height: 80)
+        .background(self.isOne ? Color(hex: 0x573353).opacity(0.2) : Color(hex: 0xFFF3E9))
+        .cornerRadius(10)
     }
 }

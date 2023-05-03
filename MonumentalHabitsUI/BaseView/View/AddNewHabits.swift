@@ -101,13 +101,16 @@ struct AddNewHabits: View {
                     .background(.white)
                     .cornerRadius(10)
                     
+                   
+                    
                     HStack {
-                        Toggle(isOn: $baseData.isNotification) {
-                            Text("Notification")
-                                .font(.system(size: 18))
-                                .foregroundColor(Color(hex: 0x573353))
-                        }
-                        .toggleStyle(SwitchToggleStyle(tint: Color(hex: 0x573353)))
+                        
+                        Text("Notification")
+                            .font(.system(size: 18))
+                            .foregroundColor(Color(hex: 0x573353))
+                        Spacer()
+                        
+                        notificationVie()
                         
                     }
                     .padding()
@@ -157,8 +160,7 @@ struct AddNewHabits: View {
                 baseData.showSheet.toggle()
             })
             .edgesIgnoringSafeArea(.bottom)
-            
-        }.animation(.default)
+        }
     }
     @ViewBuilder
     func WeekRow()->some View {
@@ -174,6 +176,71 @@ struct AddNewHabits: View {
                 .padding(5)
                 .background(.white)
                 
+            }
+        }
+    }
+    
+    func notificationVie()-> some View {
+     
+        VStack {
+            VStack {
+               // Toggle
+                ZStack {
+                    //Background
+                    Capsule()
+                        .fill(baseData.isNotification ? Color(hex: 0x573353).opacity(0.3) : Color(hex: 0xFDA758).opacity(0.3))
+                        .frame(width: 55,height: 34)
+                        Text("on")
+                        .font(.system(size: 12))
+                            .foregroundColor(.black)
+                            .padding(.trailing,20)
+                                 
+                         Text("off")
+                        .foregroundColor(.black)
+                        .font(.system(size: 12))
+                        .padding(.leading,20)
+                    
+                    HStack {
+                        
+                        if !baseData.isNotification {
+                            Spacer()
+                        }
+                        Circle()
+                            .fill(baseData.isNotification ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
+                            .frame(width: 30,height: 25)
+                            .padding(.horizontal,3)
+                            .onTapGesture {
+                                withAnimation(.spring()) {
+                                    baseData.isNotification = !baseData.isNotification
+//                                    onChangeMode()
+                                }
+                            }
+                            .gesture(
+                                DragGesture().onEnded({ value in
+                                    if value.translation.width > 30 {
+                                        //Dark mode
+                                        withAnimation(.spring()) {
+                                            baseData.isNotification = false
+//                                            onChangeMode()
+                                        }
+                                    }
+                                    
+                                    if value.translation.width > -30 {
+                                        //Light mode
+                                        withAnimation(.spring()) {
+                                            baseData.isNotification = true
+//                                            onChangeMode()
+                                        }
+                                    }
+                                })
+                            )
+                        if baseData.isNotification {
+                            
+                            Spacer()
+                        }
+                    }
+                    .frame(width: 60)
+                }
             }
         }
     }

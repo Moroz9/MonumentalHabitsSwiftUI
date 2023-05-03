@@ -26,6 +26,7 @@
 		46C70CE629FA88DF006F6047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C70CE529FA88DF006F6047 /* Assets.xcassets */; };
 		46C70CE929FA88DF006F6047 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C70CE829FA88DF006F6047 /* Preview Assets.xcassets */; };
 		46C70CF029FA9478006F6047 /* Exstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CEF29FA9478006F6047 /* Exstension.swift */; };
+		46F580C72A029BDA0031E9D4 /* AddReminderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F580C62A029BDA0031E9D4 /* AddReminderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		46C70CE529FA88DF006F6047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46C70CE829FA88DF006F6047 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		46C70CEF29FA9478006F6047 /* Exstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exstension.swift; sourceTree = "<group>"; };
+		46F580C62A029BDA0031E9D4 /* AddReminderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				46A8DC5329FFF1A2005AAA29 /* Home.swift */,
 				46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */,
 				46A8DC592A026092005AAA29 /* ButtonSheet.swift */,
+				46F580C62A029BDA0031E9D4 /* AddReminderButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */,
 				46A8DC5A2A026092005AAA29 /* ButtonSheet.swift in Sources */,
 				46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */,
+				46F580C72A029BDA0031E9D4 /* AddReminderButton.swift in Sources */,
 				46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */,
 				469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */,
 				46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */,
