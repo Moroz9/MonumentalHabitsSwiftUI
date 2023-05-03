@@ -21,6 +21,12 @@ class BaseViewModel: ObservableObject {
     @Published var habitsType = "basic"
     
     @Published var habitsName = ""
+    
+    //Button Sheet 
+    @Published var isConnected = false
+    @Published var showSheet = false
+    
+    
 }
 
 // Enum case for Tab items

@@ -18,6 +18,8 @@
 		46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */; };
 		46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5329FFF1A2005AAA29 /* Home.swift */; };
 		46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */; };
+		46A8DC5A2A026092005AAA29 /* ButtonSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC592A026092005AAA29 /* ButtonSheet.swift */; };
+		46A8DC5C2A02619F005AAA29 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5B2A02619F005AAA29 /* Server.swift */; };
 		46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE3D0C29FBEEB200125DDE /* SignUpView.swift */; };
 		46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */; };
 		46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE329FA88DE006F6047 /* LogInView.swift */; };
@@ -35,6 +37,8 @@
 		46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
 		46A8DC5329FFF1A2005AAA29 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabits.swift; sourceTree = "<group>"; };
+		46A8DC592A026092005AAA29 /* ButtonSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSheet.swift; sourceTree = "<group>"; };
+		46A8DC5B2A02619F005AAA29 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		46BE3D0C29FBEEB200125DDE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		46C70CDE29FA88DE006F6047 /* MonumentalHabitsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonumentalHabitsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentalHabitsUIApp.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 		46A8DC4A29FFCEAF005AAA29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46A8DC5B2A02619F005AAA29 /* Server.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */,
 				46A8DC5329FFF1A2005AAA29 /* Home.swift */,
 				46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */,
+				46A8DC592A026092005AAA29 /* ButtonSheet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */,
+				46A8DC5A2A026092005AAA29 /* ButtonSheet.swift in Sources */,
 				46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */,
 				46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */,
 				469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */,
@@ -256,6 +263,7 @@
 				46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */,
 				46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */,
 				46C70CF029FA9478006F6047 /* Exstension.swift in Sources */,
+				46A8DC5C2A02619F005AAA29 /* Server.swift in Sources */,
 				4667D37F29FD13C00080F1BF /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +401,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -422,6 +431,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
