@@ -23,9 +23,9 @@
 		46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */; };
 		46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */; };
 		46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5329FFF1A2005AAA29 /* Home.swift */; };
-		46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */; };
 		46A8DC5A2A026092005AAA29 /* RemainderTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC592A026092005AAA29 /* RemainderTime.swift */; };
-		46A8DC5C2A02619F005AAA29 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5B2A02619F005AAA29 /* Server.swift */; };
+		46A8DC5C2A02619F005AAA29 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5B2A02619F005AAA29 /* Reminder.swift */; };
+		46BE1A762A053C7B007BE1D2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE1A752A053C7B007BE1D2 /* Profile.swift */; };
 		46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE3D0C29FBEEB200125DDE /* SignUpView.swift */; };
 		46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */; };
 		46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE329FA88DE006F6047 /* LogInView.swift */; };
@@ -49,9 +49,9 @@
 		46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
 		46A8DC5329FFF1A2005AAA29 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabits.swift; sourceTree = "<group>"; };
 		46A8DC592A026092005AAA29 /* RemainderTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderTime.swift; sourceTree = "<group>"; };
-		46A8DC5B2A02619F005AAA29 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		46A8DC5B2A02619F005AAA29 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		46BE1A752A053C7B007BE1D2 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		46BE3D0C29FBEEB200125DDE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		46C70CDE29FA88DE006F6047 /* MonumentalHabitsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonumentalHabitsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentalHabitsUIApp.swift; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 		469B7B042A03B973003C8D02 /* New Habits */ = {
 			isa = PBXGroup;
 			children = (
-				46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */,
 				469B7B532A03E9B5003C8D02 /* AddNewHabit.swift */,
 				46A8DC592A026092005AAA29 /* RemainderTime.swift */,
 				46F580C62A029BDA0031E9D4 /* AddReminderButton.swift */,
@@ -151,6 +150,7 @@
 		469B7B082A03BA39003C8D02 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				46BE1A752A053C7B007BE1D2 /* Profile.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 		46A8DC4A29FFCEAF005AAA29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				46A8DC5B2A02619F005AAA29 /* Server.swift */,
+				46A8DC5B2A02619F005AAA29 /* Reminder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */,
+				46BE1A762A053C7B007BE1D2 /* Profile.swift in Sources */,
 				46A8DC5A2A026092005AAA29 /* RemainderTime.swift in Sources */,
 				469B7B4D2A03DE42003C8D02 /* Persistence.swift in Sources */,
 				46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */,
@@ -341,10 +342,9 @@
 				46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */,
 				46A8DC4E29FFCEF6005AAA29 /* TabBarView.swift in Sources */,
 				469B7B0B2A03BAB6003C8D02 /* Settings.swift in Sources */,
-				46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */,
 				46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */,
 				46C70CF029FA9478006F6047 /* Exstension.swift in Sources */,
-				46A8DC5C2A02619F005AAA29 /* Server.swift in Sources */,
+				46A8DC5C2A02619F005AAA29 /* Reminder.swift in Sources */,
 				469B7B502A03DE7E003C8D02 /* MonumentalHabits.xcdatamodeld in Sources */,
 				4667D37F29FD13C00080F1BF /* ModelData.swift in Sources */,
 				469B7B522A03E405003C8D02 /* HabitViewModel.swift in Sources */,

@@ -10,7 +10,6 @@ import SwiftUI
 struct AddNewHabit: View {
     @EnvironmentObject var habitModel: HabitViewModel
     @Environment(\.self) var end
-    @State var activateDarkMode = false
     
     var body: some View {
         
@@ -147,7 +146,7 @@ struct AddNewHabit: View {
                 VStack {
                     Spacer()
                  
-                    RemainderTime(isOne: activateDarkMode).offset(y: habitModel.showRemainderTime ? 0 : UIScreen.main.bounds .height)
+//                    RemainderTime(reminder: habitModel.notificationReminder).offset(y: habitModel.showRemainderTime ? 0 : UIScreen.main.bounds .height)
                     
                 }.background ((habitModel.showRemainderTime ? Color.black.opacity (0.3) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
                     withAnimation {
@@ -173,7 +172,7 @@ struct AddNewHabit: View {
                 
             }
         }
-    
+        
     }
     
     @ViewBuilder
@@ -196,22 +195,28 @@ struct AddNewHabit: View {
         }
     }
     
+    func getIndex(item: Reminder)-> Int {
+        return habitModel.notificationReminder.firstIndex { (item1) -> Bool in
+            return item.id == item1.id
+        } ?? 0
+    }
+    
     func notificationVie()-> some View {
-     
+        
         VStack {
             VStack {
-               // Toggle
+                // Toggle
                 ZStack {
                     //Background
                     Capsule()
                         .fill(habitModel.isRemainderOn ? Color(hex: 0x573353).opacity(0.3) : Color(hex: 0xFDA758).opacity(0.3))
                         .frame(width: 55,height: 34)
-                        Text("on")
+                    Text("on")
                         .font(.system(size: 12))
-                            .foregroundColor(.black)
-                            .padding(.trailing,20)
-                                 
-                         Text("off")
+                        .foregroundColor(.black)
+                        .padding(.trailing,20)
+                    
+                    Text("off")
                         .foregroundColor(.black)
                         .font(.system(size: 12))
                         .padding(.leading,20)
@@ -228,7 +233,7 @@ struct AddNewHabit: View {
                             .onTapGesture {
                                 withAnimation(.spring()) {
                                     habitModel.isRemainderOn = !habitModel.isRemainderOn
-    //                                    onChangeMode()
+                                    //                                    onChangeMode()
                                 }
                             }
                             .gesture(
@@ -237,7 +242,7 @@ struct AddNewHabit: View {
                                         //Dark mode
                                         withAnimation(.spring()) {
                                             habitModel.isRemainderOn = false
-    //                                            onChangeMode()
+                                            //                                            onChangeMode()
                                         }
                                     }
                                     
@@ -245,7 +250,7 @@ struct AddNewHabit: View {
                                         //Light mode
                                         withAnimation(.spring()) {
                                             habitModel.isRemainderOn = true
-    //                                            onChangeMode()
+                                            //                                            onChangeMode()
                                         }
                                     }
                                 })
@@ -260,9 +265,7 @@ struct AddNewHabit: View {
             }
         }
     }
-
 }
-
 struct AddNewHabit_Previews: PreviewProvider {
     static var previews: some View {
         AddNewHabit()
@@ -270,3 +273,35 @@ struct AddNewHabit_Previews: PreviewProvider {
     }
 }
 
+extension View {
+    func hAlign(_ alignment: Alignment)->some View {
+        self
+            .frame(maxWidth: .infinity, alignment: alignment)
+    }
+    func Align(_ alignment: Alignment)->some View {
+        self
+            .frame (maxHeight: .infinity, alignment: alignment)
+    }
+    
+}
+extension Calendar {
+    var currentWeek : [WeekDay] {
+        guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else {return []}
+        var week: [WeekDay] = []
+        for index in 0..<7 {
+            if let day = self.date(bySetting: .day, value: index, of: firstWeekDay) {
+                let weekDaySymbol: String = day.toString("EEEE")
+                let isToday = self.isDateInToday(day)
+                week.append(.init(string: weekDaySymbol, date: day))
+            }
+        }
+        return week
+    }
+    
+    struct WeekDay: Identifiable {
+        var id: UUID = .init()
+        var string: String
+        var date: Date
+        var isToday: Bool = false
+    }
+}

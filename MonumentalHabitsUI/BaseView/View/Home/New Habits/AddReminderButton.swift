@@ -31,6 +31,9 @@ struct AddReminderButton: View {
                 Button(action: {
                     withAnimation {
                         habitModel.showRemainderTime.toggle()
+                        
+                        addReminder()
+                        
                         habitModel.isAddReminder.toggle()
                     }
                 }) {
@@ -88,5 +91,9 @@ struct AddReminderButton: View {
             .background(Color.white)
             .cornerRadius(20)
             .ignoresSafeArea(.all)
+    }
+    
+    func addReminder() {
+        habitModel.notificationReminder.append(Reminder(title: "\(habitModel.remainderDate.formatted(date: .omitted, time: .shortened))", isOn: true))
     }
 }

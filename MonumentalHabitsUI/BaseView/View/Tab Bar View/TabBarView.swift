@@ -27,13 +27,13 @@ struct TabBarView: View {
                 .tag(Tab.Home)
             Text("Courses")
                 .tag(Tab.Courses)
-            AddNewHabit()
+            Text("Habit")
                 .environmentObject(baseData)
                 .background(Image("Check Button"))
                 .tag(Tab.AddNewHabit)
             Text("Community")
                 .tag(Tab.Community)
-            Text("Settings")
+            Settings()
                 .tag(Tab.Settings)
         }
         .overlay(

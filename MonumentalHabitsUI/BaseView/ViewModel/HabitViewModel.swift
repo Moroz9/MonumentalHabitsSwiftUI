@@ -20,6 +20,8 @@ class HabitViewModel: ObservableObject {
     @Published var remainderText: String = ""
     @Published var remainderDate: Date = Date()
     
+    @Published var notificationReminder: [Reminder] = [Reminder(title: "", isOn: true)]
+    
     // MARK: Remainder Time Picker
     @Published var showRemainderTime: Bool = false
     @Published var isAddReminder: Bool = false

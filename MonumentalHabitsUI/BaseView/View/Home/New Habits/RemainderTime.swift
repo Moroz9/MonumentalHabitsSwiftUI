@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RemainderTime: View {
     @EnvironmentObject var habitModel: HabitViewModel
-    @State var isOne: Bool
+    @Binding var reminder: Reminder
     
 //     var onChangeMode: ()-> Void
     
@@ -17,15 +17,62 @@ struct RemainderTime: View {
            
             VStack(spacing: 10) {
                 
-                let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
-                
-                LazyVGrid(columns: columns, spacing: 10) {
+                VStack {
                     
-                    ForEach(server){ notification in
-                        
-                        notificationView(server: notification)
+                    Text(reminder.title)
+                        .foregroundColor(reminder.isOn ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
+                        .fontWeight(.bold)
+                    
+                    VStack {
+                       // Toggle
+                        ZStack {
+                            //Background
+                            Capsule()
+                                .fill(reminder.isOn ? Color(hex: 0x573353).opacity(0.3) : Color(hex: 0xFDA758).opacity(0.3))
+                                .frame(width: 55,height: 34)
+                                Text("on")
+                                .font(.system(size: 12))
+                                    .foregroundColor(.black)
+                                    .padding(.trailing,20)
+                                         
+                                 Text("off")
+                                .foregroundColor(.black)
+                                .font(.system(size: 12))
+                                .padding(.leading,20)
+                            
+                            HStack {
+                                
+                                if !reminder.isOn {
+                                    Spacer()
+                                }
+                                Circle()
+                                    .fill(reminder.isOn ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
+                                    .frame(width: 30,height: 25)
+                                    .padding(.horizontal,3)
+                                    .onTapGesture {
+                                        withAnimation(.spring()) {
+                                            
+                                            self.reminder.isOn = !reminder.isOn
+                                 
+        //                                    onChangeMode()
+                                        }
+                                    }
+                                    
+                                if reminder.isOn {
+                                    
+                                    Spacer()
+                                }
+                            }
+                            .frame(width: 60)
+                            
+                        }
                     }
+                    .padding(.top,-5)
                 }
+                .frame(width: 115,height: 80)
+                .background(reminder.isOn ? Color(hex: 0x573353).opacity(0.2) : Color(hex: 0xFFF3E9))
+                .cornerRadius(10)
+                
                 // Reminder Button
                 HStack {
                     
@@ -61,80 +108,11 @@ struct RemainderTime: View {
             .background(Color.white)
             .cornerRadius (25)
     }
-    
-    @ViewBuilder
-    // Create view
-    func notificationView(server: Server)-> some View {
-     
-        VStack {
-            Text(server.time)
-                .foregroundColor(isOne ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
-                .fontWeight(.bold)
-            
-            VStack {
-               // Toggle
-                ZStack {
-                    //Background
-                    Capsule()
-                        .fill(isOne ? Color(hex: 0x573353).opacity(0.3) : Color(hex: 0xFDA758).opacity(0.3))
-                        .frame(width: 55,height: 34)
-                        Text("on")
-                        .font(.system(size: 12))
-                            .foregroundColor(.black)
-                            .padding(.trailing,20)
-                                 
-                         Text("off")
-                        .foregroundColor(.black)
-                        .font(.system(size: 12))
-                        .padding(.leading,20)
-                    
-                    HStack {
-                        
-                        if !isOne {
-                            Spacer()
-                        }
-                        Circle()
-                            .fill(isOne ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
-                            .frame(width: 30,height: 25)
-                            .padding(.horizontal,3)
-                            .onTapGesture {
-                                withAnimation(.spring()) {
-                                  isOne = !isOne
-//                                    onChangeMode()
-                                }
-                            }
-                            .gesture(
-                                DragGesture().onEnded({ value in
-                                    if value.translation.width > 30 {
-                                        //Dark mode
-                                        withAnimation(.spring()) {
-                                            isOne = false
-//                                            onChangeMode()
-                                        }
-                                    }
-                                    
-                                    if value.translation.width > -30 {
-                                        //Light mode
-                                        withAnimation(.spring()) {
-                                            isOne = true
-//                                            onChangeMode()
-                                        }
-                                    }
-                                })
-                            )
-                        if isOne {
-                            
-                            Spacer()
-                        }
-                    }
-                    .frame(width: 60)
-                    
-                }
-            }
-            .padding(.top,-5)
-        }
-        .frame(width: 115,height: 80)
-        .background(self.isOne ? Color(hex: 0x573353).opacity(0.2) : Color(hex: 0xFFF3E9))
-        .cornerRadius(10)
+}
+
+struct RemainderTime_Previews: PreviewProvider {
+    static var previews: some View {
+        AddNewHabit()
+            .environmentObject(HabitViewModel())
     }
 }
