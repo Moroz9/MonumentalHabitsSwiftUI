@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomCurveShape: Shape {
     func path(in rect: CGRect) -> Path {
         
-        
         return Path { path in
             
             path.move(to: CGPoint(x: 0, y: 0))
@@ -18,12 +17,10 @@ struct CustomCurveShape: Shape {
             path.addLine(to: CGPoint(x: rect.width, y: rect.height))
             path.addLine(to: CGPoint(x: 0, y: rect.height))
             
-    
             // Center curve
             let mid = rect.width / 2
             
             path.move(to: CGPoint(x: mid - 150 , y: 0))
-            
             
             let top1 = CGPoint(x: mid, y: 35)
             let control1 = CGPoint(x: mid - 35, y: 0)
@@ -37,14 +34,5 @@ struct CustomCurveShape: Shape {
             
             path.addCurve(to: top2, control1: control3, control2: control4)
         }
-    }
-    
-    
-    
-}
-
-struct CustomCurveShape_Previews: PreviewProvider {
-    static var previews: some View {
-        BaseView()
     }
 }

@@ -12,13 +12,19 @@
 		4667D37B29FD129F0080F1BF /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 4667D37A29FD129F0080F1BF /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		4667D37D29FD129F0080F1BF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4667D37C29FD129F0080F1BF /* FirebaseAuth */; };
 		4667D37F29FD13C00080F1BF /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4667D37E29FD13C00080F1BF /* ModelData.swift */; };
+		469B7B022A03B6B8003C8D02 /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B7B012A03B6B8003C8D02 /* ExtensionDate.swift */; };
+		469B7B0B2A03BAB6003C8D02 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B7B0A2A03BAB6003C8D02 /* Settings.swift */; };
+		469B7B4D2A03DE42003C8D02 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B7B4C2A03DE42003C8D02 /* Persistence.swift */; };
+		469B7B502A03DE7E003C8D02 /* MonumentalHabits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 469B7B4E2A03DE7E003C8D02 /* MonumentalHabits.xcdatamodeld */; };
+		469B7B522A03E405003C8D02 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B7B512A03E405003C8D02 /* HabitViewModel.swift */; };
+		469B7B542A03E9B5003C8D02 /* AddNewHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469B7B532A03E9B5003C8D02 /* AddNewHabit.swift */; };
 		469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BB5AF29FC1B8D00CF40CD /* ResetPasswordView.swift */; };
-		46A8DC4E29FFCEF6005AAA29 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC4D29FFCEF6005AAA29 /* BaseView.swift */; };
+		46A8DC4E29FFCEF6005AAA29 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC4D29FFCEF6005AAA29 /* TabBarView.swift */; };
 		46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */; };
 		46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */; };
 		46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5329FFF1A2005AAA29 /* Home.swift */; };
 		46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */; };
-		46A8DC5A2A026092005AAA29 /* ButtonSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC592A026092005AAA29 /* ButtonSheet.swift */; };
+		46A8DC5A2A026092005AAA29 /* RemainderTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC592A026092005AAA29 /* RemainderTime.swift */; };
 		46A8DC5C2A02619F005AAA29 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5B2A02619F005AAA29 /* Server.swift */; };
 		46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE3D0C29FBEEB200125DDE /* SignUpView.swift */; };
 		46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */; };
@@ -32,13 +38,19 @@
 /* Begin PBXFileReference section */
 		4667D37529FD11840080F1BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4667D37E29FD13C00080F1BF /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		469B7B012A03B6B8003C8D02 /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
+		469B7B0A2A03BAB6003C8D02 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		469B7B4C2A03DE42003C8D02 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		469B7B4F2A03DE7E003C8D02 /* MonumentalHabits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MonumentalHabits.xcdatamodel; sourceTree = "<group>"; };
+		469B7B512A03E405003C8D02 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		469B7B532A03E9B5003C8D02 /* AddNewHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabit.swift; sourceTree = "<group>"; };
 		469BB5AF29FC1B8D00CF40CD /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
-		46A8DC4D29FFCEF6005AAA29 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		46A8DC4D29FFCEF6005AAA29 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCurveShape.swift; sourceTree = "<group>"; };
 		46A8DC5329FFF1A2005AAA29 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabits.swift; sourceTree = "<group>"; };
-		46A8DC592A026092005AAA29 /* ButtonSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSheet.swift; sourceTree = "<group>"; };
+		46A8DC592A026092005AAA29 /* RemainderTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderTime.swift; sourceTree = "<group>"; };
 		46A8DC5B2A02619F005AAA29 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		46BE3D0C29FBEEB200125DDE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		46C70CDE29FA88DE006F6047 /* MonumentalHabitsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonumentalHabitsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +102,66 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		469B7B032A03B8E9003C8D02 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				46C70CEF29FA9478006F6047 /* Exstension.swift */,
+				469B7B012A03B6B8003C8D02 /* ExtensionDate.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		469B7B042A03B973003C8D02 /* New Habits */ = {
+			isa = PBXGroup;
+			children = (
+				46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */,
+				469B7B532A03E9B5003C8D02 /* AddNewHabit.swift */,
+				46A8DC592A026092005AAA29 /* RemainderTime.swift */,
+				46F580C62A029BDA0031E9D4 /* AddReminderButton.swift */,
+			);
+			path = "New Habits";
+			sourceTree = "<group>";
+		};
+		469B7B052A03B9BA003C8D02 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				46A8DC5329FFF1A2005AAA29 /* Home.swift */,
+				469B7B042A03B973003C8D02 /* New Habits */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		469B7B062A03B9DF003C8D02 /* Tab Bar View */ = {
+			isa = PBXGroup;
+			children = (
+				46A8DC4D29FFCEF6005AAA29 /* TabBarView.swift */,
+				46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */,
+			);
+			path = "Tab Bar View";
+			sourceTree = "<group>";
+		};
+		469B7B072A03BA2D003C8D02 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				469B7B0A2A03BAB6003C8D02 /* Settings.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		469B7B082A03BA39003C8D02 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		469B7B092A03BA48003C8D02 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
 		46A8DC4829FFCDE5005AAA29 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				46A8DC4F29FFCF15005AAA29 /* BaseViewModel.swift */,
+				469B7B512A03E405003C8D02 /* HabitViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -128,12 +201,11 @@
 		46A8DC4C29FFCED1005AAA29 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				46A8DC4D29FFCEF6005AAA29 /* BaseView.swift */,
-				46A8DC5129FFEAE2005AAA29 /* CustomCurveShape.swift */,
-				46A8DC5329FFF1A2005AAA29 /* Home.swift */,
-				46A8DC552A00F8F3005AAA29 /* AddNewHabits.swift */,
-				46A8DC592A026092005AAA29 /* ButtonSheet.swift */,
-				46F580C62A029BDA0031E9D4 /* AddReminderButton.swift */,
+				469B7B052A03B9BA003C8D02 /* Home */,
+				469B7B092A03BA48003C8D02 /* Courses */,
+				469B7B082A03BA39003C8D02 /* Profile */,
+				469B7B072A03BA2D003C8D02 /* Settings */,
+				469B7B062A03B9DF003C8D02 /* Tab Bar View */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,8 +233,10 @@
 				46A8DC4829FFCDE5005AAA29 /* Auth */,
 				46A8DC4929FFCDF9005AAA29 /* BaseView */,
 				46C70CE729FA88DF006F6047 /* Preview Content */,
-				46C70CEF29FA9478006F6047 /* Exstension.swift */,
+				469B7B032A03B8E9003C8D02 /* Extension */,
 				4667D37529FD11840080F1BF /* GoogleService-Info.plist */,
+				469B7B4C2A03DE42003C8D02 /* Persistence.swift */,
+				469B7B4E2A03DE7E003C8D02 /* MonumentalHabits.xcdatamodeld */,
 			);
 			path = MonumentalHabitsUI;
 			sourceTree = "<group>";
@@ -256,19 +330,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */,
-				46A8DC5A2A026092005AAA29 /* ButtonSheet.swift in Sources */,
+				46A8DC5A2A026092005AAA29 /* RemainderTime.swift in Sources */,
+				469B7B4D2A03DE42003C8D02 /* Persistence.swift in Sources */,
 				46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */,
 				46F580C72A029BDA0031E9D4 /* AddReminderButton.swift in Sources */,
+				469B7B022A03B6B8003C8D02 /* ExtensionDate.swift in Sources */,
 				46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */,
 				469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */,
 				46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */,
 				46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */,
-				46A8DC4E29FFCEF6005AAA29 /* BaseView.swift in Sources */,
+				46A8DC4E29FFCEF6005AAA29 /* TabBarView.swift in Sources */,
+				469B7B0B2A03BAB6003C8D02 /* Settings.swift in Sources */,
 				46A8DC562A00F8F3005AAA29 /* AddNewHabits.swift in Sources */,
 				46A8DC5029FFCF15005AAA29 /* BaseViewModel.swift in Sources */,
 				46C70CF029FA9478006F6047 /* Exstension.swift in Sources */,
 				46A8DC5C2A02619F005AAA29 /* Server.swift in Sources */,
+				469B7B502A03DE7E003C8D02 /* MonumentalHabits.xcdatamodeld in Sources */,
 				4667D37F29FD13C00080F1BF /* ModelData.swift in Sources */,
+				469B7B522A03E405003C8D02 /* HabitViewModel.swift in Sources */,
+				469B7B542A03E9B5003C8D02 /* AddNewHabit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +580,19 @@
 			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		469B7B4E2A03DE7E003C8D02 /* MonumentalHabits.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				469B7B4F2A03DE7E003C8D02 /* MonumentalHabits.xcdatamodel */,
+			);
+			currentVersion = 469B7B4F2A03DE7E003C8D02 /* MonumentalHabits.xcdatamodel */;
+			path = MonumentalHabits.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 46C70CD629FA88DE006F6047 /* Project object */;
 }

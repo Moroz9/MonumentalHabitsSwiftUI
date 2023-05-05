@@ -12,9 +12,12 @@ import FirebaseCore
 struct MonumentalHabitsUIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
-            BaseView()
+            TabBarView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

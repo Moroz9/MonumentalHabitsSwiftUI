@@ -12,7 +12,7 @@ class BaseViewModel: ObservableObject {
     // Tab Bar
     @Published var currentTab: Tab = .Home
     
-    //HabitsViewModel
+    //HabitViewModel
     @Published var openEditHabits = false
     @Published var isNotification = false
     @Published var habitsTitle = ""
@@ -36,7 +36,7 @@ class BaseViewModel: ObservableObject {
 enum Tab: String {
     case Home = "Home"
     case Courses = "Courses"
-    case AddNewHabits = "AddNewHabits"
+    case AddNewHabit = "AddNewHabits"
     case Community = "Community"
     case Settings = "Settings"
 }

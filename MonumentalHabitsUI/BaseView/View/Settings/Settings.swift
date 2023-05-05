@@ -1,19 +1,19 @@
 //
-//  Home.swift
+//  Settings.swift
 //  MonumentalHabitsUI
 //
-//  Created by Viktor Morozov on 01.05.23.
+//  Created by Viktor Morozov on 04.05.23.
 //
 
 import SwiftUI
 
-struct Home: View {
+struct Settings: View {
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
             
             VStack(spacing: 10) {
-
+            // PlaceHolder ..
                 HStack {
                     
                     Button {
@@ -23,34 +23,33 @@ struct Home: View {
                     }
                     .padding(.leading,20)
                     Spacer()
-                    
-                    Image("Image")
-                        .padding(.trailing,20)
                 }
-                .overlay(Text("Homepage")
+                .overlay(Text("Settings")
                     .font(.system(size: 18))
                     .fontWeight(.bold)
                     .font(.title2)
                     .foregroundColor(Color(hex: 0x573353))
                 )
-                // PlaceHolder ..
+            // View ..
                         ZStack {
                             
                             Spacer()
                             Image("Mask Group")
-                                .aspectRatio(contentMode: .fit)
+                                .aspectRatio(contentMode: .fill)
                                 .frame(width: getRect().width / 2.2)
                                 .padding(.leading,144)
 
                             HStack {
                                 VStack(alignment: .leading,spacing: 10, content: {
-                                    Text("WE FIRST MAKE UOR HABITS, AND THEN UOR HABITS MAKES US")
+                                    Text("Check Your Profile")
                                         .font(.system(size: 16))
                                         .lineLimit(3)
                                         .fontWeight(.bold)
                                         .foregroundColor(Color(hex: 0x573353))
-                                    Text("-anonymous")
-                                        .foregroundColor(Color(hex: 0x573353))
+                                    
+                                    Button(action: {}) {
+                                        Text("View")
+                                    }
                                 })
                                 .padding(.trailing,94)
                                 .padding(.leading,-5)
@@ -68,15 +67,8 @@ struct Home: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        BaseView()
-    }
-}
-
-// Extending View To Get Screen Frame
-extension View {
-    func getRect ()->CGRect{
-        return UIScreen.main.bounds
+        Settings()
     }
 }

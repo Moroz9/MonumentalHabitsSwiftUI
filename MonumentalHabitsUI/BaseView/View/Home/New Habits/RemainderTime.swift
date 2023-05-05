@@ -1,5 +1,5 @@
 //
-//  ButtonSheet.swift
+//  RemainderTime.swift
 //  MonumentalHabitsUI
 //
 //  Created by Viktor Morozov on 03.05.23.
@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-struct ButtonSheet: View {
-    @ObservedObject var serverData: BaseViewModel
+struct RemainderTime: View {
+    @EnvironmentObject var habitModel: HabitViewModel
     @State var isOne: Bool
-    var onChangeMode: ()-> Void
+    
+//     var onChangeMode: ()-> Void
     
     var body: some View {
-  
-        ZStack {
            
             VStack(spacing: 10) {
                 
@@ -30,7 +29,12 @@ struct ButtonSheet: View {
                 // Reminder Button
                 HStack {
                     
-                    Button {serverData.isAddReminder.toggle() } label: {
+                    Button {
+                        withAnimation {
+                            habitModel.showRemainderTime.toggle()
+                            habitModel.isAddReminder.toggle()
+                        }
+                    } label: {
                         Text("Add Reminder")
                             .fontWeight(.bold)
                             .foregroundColor(Color(hex: 0x573353))
@@ -51,22 +55,11 @@ struct ButtonSheet: View {
                 
                 
             }
-//            .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
             .padding(.bottom,30)
             .padding(.horizontal)
             .padding(.top, 20)
             .background(Color.white)
             .cornerRadius (25)
-            
-            
-            VStack {
-                AddReminderButton(baseData: serverData).offset(y: serverData.isAddReminder ? 0 : UIScreen.main.bounds.height)
-
-            }.background((serverData.isAddReminder ? Color.black.opacity (0.1) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
-                serverData.isAddReminder.toggle()
-            })
-            .edgesIgnoringSafeArea(.bottom)
-        }
     }
     
     @ViewBuilder
@@ -107,7 +100,7 @@ struct ButtonSheet: View {
                             .onTapGesture {
                                 withAnimation(.spring()) {
                                   isOne = !isOne
-                                    onChangeMode()
+//                                    onChangeMode()
                                 }
                             }
                             .gesture(
@@ -116,7 +109,7 @@ struct ButtonSheet: View {
                                         //Dark mode
                                         withAnimation(.spring()) {
                                             isOne = false
-                                            onChangeMode()
+//                                            onChangeMode()
                                         }
                                     }
                                     
@@ -124,7 +117,7 @@ struct ButtonSheet: View {
                                         //Light mode
                                         withAnimation(.spring()) {
                                             isOne = true
-                                            onChangeMode()
+//                                            onChangeMode()
                                         }
                                     }
                                 })

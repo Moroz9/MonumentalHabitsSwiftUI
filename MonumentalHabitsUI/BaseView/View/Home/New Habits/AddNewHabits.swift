@@ -22,9 +22,7 @@ struct AddNewHabits: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
                     .overlay(alignment: .leading) {
-                        Button {
-                            
-                        } label: {
+                        Button {} label: {
                             Image("IconsBack")
                         }
                     }
@@ -89,7 +87,7 @@ struct AddNewHabits: View {
                         
                         Spacer()
                         Button {
-                            baseData.showSheet.toggle()
+//                            baseData.showSheet.toggle()
                         } label: {
                             Text("Time")
                             Image(systemName: "chevron.forward")
@@ -150,16 +148,16 @@ struct AddNewHabits: View {
             .background(Image("Background"),alignment: .bottom)
             .background(Color(hex: 0xFFF3E9))
          
-            VStack {
-                Spacer()
-                ButtonSheet(serverData: baseData, isOne: activateDarkMode, onChangeMode:  {
-                    
-                }).offset(y: baseData.showSheet ? 0 : UIScreen.main.bounds .height)
-                
-            }.background ((baseData.showSheet ? Color.black.opacity (0.3) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
-                baseData.showSheet.toggle()
-            })
-            .edgesIgnoringSafeArea(.bottom)
+//            VStack {
+//                Spacer()
+//                RemainderTime(serverData: baseData, isOne: activateDarkMode, onChangeMode:  {
+//
+//                }).offset(y: baseData.showSheet ? 0 : UIScreen.main.bounds .height)
+//
+//            }.background ((baseData.showSheet ? Color.black.opacity (0.3) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
+//                baseData.showSheet.toggle()
+//            })
+//            .edgesIgnoringSafeArea(.bottom)
         }
     }
     @ViewBuilder
@@ -251,14 +249,6 @@ struct addNewHabits_Previews: PreviewProvider {
         AddNewHabits()
     }
 }
-extension Date {
-    func toString(_ format: String)-> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
-    }
-}
-
 extension Calendar {
     var currentWeek : [WeekDay] {
         guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else {return []}
@@ -292,4 +282,3 @@ extension View {
     }
     
 }
-
