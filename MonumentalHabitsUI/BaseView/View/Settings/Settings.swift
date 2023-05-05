@@ -9,137 +9,138 @@ import SwiftUI
 
 struct Settings: View {
     var body: some View {
-        
-        ScrollView(.vertical, showsIndicators: false) {
-            
-            VStack(spacing: 10) {
-                // PlaceHolder ..
-                HStack {
-                    
-                    Button {
-                        
-                    } label: {
-                        Image("IconsBase")
-                    }
-                    .padding(.leading,20)
-                    Spacer()
-                }
-                .overlay(Text("Settings")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: 0x573353))
-                )
-                // View ..
-                ZStack {
-
-                    ZStack {
-                        if UIScreen.main.bounds.height < 750 {
-                            Image("Mask Group")
-                                .resizable()
-                                .frame(width: 130,height: 100)
-                                .padding(.leading,144)
-                        } else {
-                            Image("Mask Group")
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: getRect().width / 2.2)
-                                .padding(.leading,144)
-                        }
-                    }
-                    .padding(.top,10)
-                        
-                    
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                VStack(spacing: 10) {
+                    // PlaceHolder ..
                     HStack {
                         
-                        VStack(alignment: .leading,spacing: 10, content: {
-                            Text("Check Your Profile")
-                                .font(.system(size: 20))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color(hex: 0x573353))
+                        Button {
                             
-                            Text("jonathansmith.gmail.com")
-                                .font(.system(size: 11))
+                        } label: {
+                            Image("IconsBase")
+                        }
+                        .padding(.leading,20)
+                        Spacer()
+                    }
+                    .overlay(Text("Settings")
+                        .font(.system(size: 18))
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .foregroundColor(Color(hex: 0x573353))
+                    )
+                    // View ..
+                    ZStack {
+                        
+                        ZStack {
+                            if UIScreen.main.bounds.height < 750 {
+                                Image("Mask Group")
+                                    .resizable()
+                                    .frame(width: 130,height: 100)
+                                    .padding(.leading,144)
+                            } else {
+                                Image("Mask Group")
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: getRect().width / 2.2)
+                                    .padding(.leading,144)
+                            }
+                        }
+                        .padding(.top,10)
+                        
+                        
+                        HStack {
                             
-                            Button { } label: {
-                                Text("View")
-                                    .padding(.horizontal,30)
-                                    .padding(.vertical,10)
+                            VStack(alignment: .leading,spacing: 10, content: {
+                                Text("Check Your Profile")
+                                    .font(.system(size: 20))
                                     .fontWeight(.bold)
                                     .foregroundColor(Color(hex: 0x573353))
-                                    .background(Color(hex: 0xFDA758))
-                                    .cornerRadius(10)
-                            }
-                            .padding(.top, 10)
-
+                                
+                                Text("jonathansmith.gmail.com")
+                                    .font(.system(size: 11))
+                                
+                                Button { } label: {
+                                    Text("View")
+                                        .padding(.horizontal,30)
+                                        .padding(.vertical,10)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color(hex: 0x573353))
+                                        .background(Color(hex: 0xFDA758))
+                                        .cornerRadius(10)
+                                }
+                                .padding(.top, 10)
+                                
+                            })
+                            .padding(.trailing,94)
+                            .padding(.leading,-5)
+                            .padding(.top,-10)
+                        }
+                        
+                    }
+                    .padding()
+                    .background(.white)
+                    .cornerRadius(15)
+                    .padding(.horizontal)
+                    .padding(.top,5)
+                    
+                    
+                    // General
+                    Text("General").padding(.leading, -UIScreen.main.bounds.width / 2.2)
+                    
+                    VStack(spacing: 5) {
+                        
+                        CustomNavigationLinkGeneral(image: "ion:notifications-circle", title: "Notifications", placeHolder: "Customise notifications", content: {
+                            Text ("")
+                                .navigationTitle("Notifications")
+                                .frame (maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color(hex: 0xFFF3E9).ignoresSafeArea())
                         })
-                        .padding(.trailing,94)
-                        .padding(.leading,-5)
-                        .padding(.top,-10)
+                        
+                        CustomNavigationLinkGeneral(image: "more 1", title: "More customisation", placeHolder: "Customise it more to fit your usage", content: {
+                            Text ("")
+                                .navigationTitle("More customisation")
+                                .frame (maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color(hex: 0xFFF3E9).ignoresSafeArea())
+                        })
+                    }
+                    
+                    // Support
+                    Text("Support").padding(.leading, -UIScreen.main.bounds.width / 2.2)
+                    
+                    VStack(spacing: 5) {
+                        
+                        CustomNavigationLinkSupport(image: "chat phone", title: "Contact", content: {
+                            Text ("")
+                                .navigationTitle("Contact")
+                                .frame (maxWidth: .infinity, maxHeight: .infinity)
+                                .background (Color(hex: 0xFFF3E9).ignoresSafeArea())
+                        })
+                        CustomNavigationLinkSupport(image: "facebookImage", title: "Feedback", content: {
+                            Text ("")
+                                .navigationTitle("Feedback")
+                                .frame (maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color(hex: 0xFFF3E9).ignoresSafeArea())
+                        })
+                        CustomNavigationLinkSupport(image: "Group 10075", title: "Privacy Policy", content: {
+                            Text ("")
+                                .navigationTitle("Privacy Policy")
+                                .frame (maxWidth: .infinity, maxHeight: .infinity)
+                                .background (Color(hex: 0xFFF3E9).ignoresSafeArea())
+                        })
+                        CustomNavigationLinkSupport(image: "Group 10043", title: "About", content: {
+                            Text ("")
+                                .navigationTitle("About")
+                                .frame (maxWidth: .infinity, maxHeight: .infinity)
+                                .background (Color(hex: 0xFFF3E9).ignoresSafeArea())
+                        })
+                        
                     }
                     
                 }
-                .padding()
-                .background(.white)
-                .cornerRadius(15)
-                .padding(.horizontal)
-                .padding(.top,5)
-                
-                
-                // General
-                Text("General").padding(.leading, -UIScreen.main.bounds.width / 2.2)
-                
-                VStack(spacing: 5) {
-                    
-                    CustomNavigationLinkGeneral(image: "ion:notifications-circle", title: "Notifications", placeHolder: "Customise notifications", content: {
-                        Text ("")
-                            .navigationTitle("Edit Profile")
-                            .frame (maxWidth: .infinity, maxHeight: .infinity)
-                            .background (Color.gray.ignoresSafeArea())
-                    })
-                    
-                    CustomNavigationLinkGeneral(image: "more 1", title: "More customisation", placeHolder: "Customise it more to fit your usage", content: {
-                        Text ("")
-                            .navigationTitle("More customisation")
-                            .frame (maxWidth: .infinity, maxHeight: .infinity)
-                            .background (Color.gray.ignoresSafeArea())
-                    })
-                }
-                
-                // Support
-                Text("Support").padding(.leading, -UIScreen.main.bounds.width / 2.2)
-                
-                VStack(spacing: 5) {
-            
-                    CustomNavigationLinkSupport(image: "chat phone", title: "Contact", content: {
-                        Text ("")
-                            .navigationTitle("Contact")
-                            .frame (maxWidth: .infinity, maxHeight: .infinity)
-                            .background (Color.gray.ignoresSafeArea())
-                    })
-                    CustomNavigationLinkSupport(image: "facebookImage", title: "Feedback", content: {
-                        Text ("")
-                            .navigationTitle("Feedback")
-                            .frame (maxWidth: .infinity, maxHeight: .infinity)
-                            .background (Color.gray.ignoresSafeArea())
-                    })
-                    CustomNavigationLinkSupport(image: "Group 10075", title: "Privacy Policy", content: {
-                        Text ("")
-                            .navigationTitle("Privacy Policy")
-                            .frame (maxWidth: .infinity, maxHeight: .infinity)
-                            .background (Color.gray.ignoresSafeArea())
-                    })
-                    CustomNavigationLinkSupport(image: "Group 10043", title: "About", content: {
-                        Text ("")
-                            .navigationTitle("About")
-                            .frame (maxWidth: .infinity, maxHeight: .infinity)
-                            .background (Color.gray.ignoresSafeArea())
-                    })
-                    
-                }
-                
             }
+            .background(Color(hex: 0xFFF3E9))
         }
-        .background(Color(hex: 0xFFF3E9))
     }
     
     @ViewBuilder

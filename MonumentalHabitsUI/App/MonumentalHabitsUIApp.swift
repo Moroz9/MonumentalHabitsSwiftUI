@@ -10,6 +10,7 @@ import FirebaseCore
 
 @main
 struct MonumentalHabitsUIApp: App {
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     let persistenceController = PersistenceController.shared
@@ -17,7 +18,8 @@ struct MonumentalHabitsUIApp: App {
     var body: some Scene {
         WindowGroup {
             TabBarView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext,
+                              persistenceController.container.viewContext)
         }
     }
 }

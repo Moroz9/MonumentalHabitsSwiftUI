@@ -112,7 +112,7 @@ struct RemainderTime: View {
 
 struct RemainderTime_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewHabit()
+        NewHabit()
             .environmentObject(HabitViewModel())
     }
 }

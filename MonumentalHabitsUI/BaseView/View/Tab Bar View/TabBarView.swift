@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TabBarView: View {
-    @StateObject var baseData = BaseViewModel()
     @StateObject var habitModel = HabitViewModel()
     
     // isHidden Tab Bar
@@ -19,24 +18,22 @@ struct TabBarView: View {
     
     var body: some View {
         
-        TabView(selection: $baseData.currentTab) {
+        TabView(selection: $habitModel.currentTab) {
             Home()
-                .environmentObject(baseData)
+                .environmentObject(habitModel)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color(hex: 0xFFF3E9))
                 .tag(Tab.Home)
             Text("Courses")
                 .tag(Tab.Courses)
-            Text("Habit")
-                .environmentObject(baseData)
-                .background(Image("Check Button"))
-                .tag(Tab.AddNewHabit)
             Text("Community")
                 .tag(Tab.Community)
             Settings()
                 .tag(Tab.Settings)
         }
         .overlay(
+            
+            
             // Custom tab bar
             HStack(spacing: 0) {
                 TabButton(Tab: .Home)
@@ -46,14 +43,23 @@ struct TabBarView: View {
                 
                 // Center Add Button
                 
-                TabButton(Tab: .AddNewHabit )
-                    .padding(18)
-                    .background(Color(hex: 0xFC9D45))
-                    .clipShape(Circle())
-                    .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: 5)
-                    .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: -5)
-                    .offset(y: -30)
-                    .tag(Tab.AddNewHabit)
+                Button {
+                    withAnimation (Animation.default.speed (0.3)){
+                        habitModel.newHabit.toggle()
+                    }
+                    } label: {
+                    
+                    Image(habitModel.newHabit ? "Check Button" : "AddNewHabits" )
+                        .padding(18)
+                        .background(Color(hex: 0xFC9D45))
+                        .clipShape(Circle())
+                        .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: 5)
+                        .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: -5)
+                        .offset(y: -30)
+                }
+                .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: 5)
+                .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: -5)
+                
                 
                 TabButton(Tab: .Community)
                     .offset(x: 10,y: 15)
@@ -68,6 +74,7 @@ struct TabBarView: View {
                 )
             ,alignment: .bottom
         )
+        
     }
     @ViewBuilder
     
@@ -75,7 +82,7 @@ struct TabBarView: View {
         
         Button {
             withAnimation {
-                baseData.currentTab = Tab
+                habitModel.currentTab = Tab
             }
         } label: {
             Image(Tab.rawValue)
@@ -83,6 +90,7 @@ struct TabBarView: View {
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 25,height: 25)
+                .colorMultiply(habitModel.currentTab == Tab ? Color.white : Color.gray)
                 .frame(maxWidth: .infinity)
         }
     }

@@ -11,81 +11,93 @@ struct Home: View {
     
     @FetchRequest(entity: Habit.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Habit.dateAdded, ascending: false)],
                   predicate: nil, animation: .easeInOut) var habits: FetchedResults<Habit>
-    @StateObject var habitsModel: HabitViewModel = .init()
+    @EnvironmentObject var habitModel: HabitViewModel
     
     
     var body: some View {
-        
-        ScrollView(.vertical, showsIndicators: false) {
+        ZStack {
             
-            VStack(spacing: 10) {
-                // PlaceHolder ..
-                HStack {
-                    
-                    Button {
-                        
-                    } label: {
-                        Image("IconsBase")
-                    }
-                    .padding(.leading,20)
-                    Spacer()
-                    
-                    Image("Image")
-                        .padding(.trailing,20)
-                }
-                .overlay(Text("Homepage")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .font(.title2)
-                    .foregroundColor(Color(hex: 0x573353))
-                )
-                // View ..
-                ZStack {
-                    
-                    Spacer()
-                    Image("Mask Group")
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: getRect().width / 2.2)
-                        .padding(.leading,144)
-                    
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                VStack(spacing: 10) {
+                    // PlaceHolder ..
                     HStack {
-                        VStack(alignment: .leading,spacing: 10, content: {
-                            Text("WE FIRST MAKE UOR HABITS, AND THEN UOR HABITS MAKES US")
-                                .font(.system(size: 16))
-                                .lineLimit(3)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color(hex: 0x573353))
-                            Text("-anonymous")
-                                .foregroundColor(Color(hex: 0x573353))
-                        })
-                        .padding(.trailing,94)
-                        .padding(.leading,-5)
-                        .padding(.top,-10)
+                        
+                        Button {
+                            
+                        } label: {
+                            Image("IconsBase")
+                        }
+                        .padding(.leading,20)
+                        Spacer()
+                        
+                        Image("Image")
+                            .padding(.trailing,20)
                     }
+                    .overlay(Text("Homepage")
+                        .font(.system(size: 18))
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .foregroundColor(Color(hex: 0x573353))
+                    )
+                    // View ..
+                    ZStack {
+                        
+                        Spacer()
+                        Image("Mask Group")
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: getRect().width / 2.2)
+                            .padding(.leading,144)
+                        
+                        HStack {
+                            VStack(alignment: .leading,spacing: 10, content: {
+                                Text("WE FIRST MAKE UOR HABITS, AND THEN UOR HABITS MAKES US")
+                                    .font(.system(size: 16))
+                                    .lineLimit(3)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color(hex: 0x573353))
+                                Text("-anonymous")
+                                    .foregroundColor(Color(hex: 0x573353))
+                            })
+                            .padding(.trailing,94)
+                            .padding(.leading,-5)
+                            .padding(.top,-10)
+                        }
+                    }
+                    .padding()
+                    .background(.white)
+                    .cornerRadius(15)
+                    .padding(.horizontal)
+                    .padding(.top)
+                    
+                    ForEach(habits){ habit in
+                        habitCardView(habit: habit)
+                    }
+                    
                 }
-                .padding()
-                .background(.white)
-                .cornerRadius(15)
-                .padding(.horizontal)
-                .padding(.top)
                 
                 ForEach(habits){ habit in
                     habitCardView(habit: habit)
                 }
                 
+                
+              
+            }
+            .background(Image("Background"),alignment: .bottom)
+            .sheet(isPresented: $habitModel.addNewHabit){
+                habitModel.resetData()
+            } content: {
+                NewHabit()
+                    .environmentObject(habitModel)
             }
             
-            ForEach(habits){ habit in
-                habitCardView(habit: habit)
-            }
-           
-        }
-        .background(Image("Background"),alignment: .bottom)
-        .sheet(isPresented: $habitsModel.addNewHabit){
-            habitsModel.resetData()
-        } content: {
-            AddNewHabit()
-                .environmentObject(habitsModel)
+            VStack {
+                NewHabit()
+            }.frame(height: habitModel.newHabit ? nil : 0)
+                .opacity(habitModel.newHabit ? 1 : 0)
+                .offset(y: habitModel.newHabit ? 0 : UIScreen.main.bounds.height )
+               
+               
         }
     }
     
@@ -135,9 +147,9 @@ struct Home: View {
         }
         .onTapGesture {
             // MARK: Editing Habit
-            habitsModel.editHabit = habit
-            habitsModel.restoreEditData()
-            habitsModel.addNewHabit.toggle()
+            habitModel.editHabit = habit
+            habitModel.restoreEditData()
+            habitModel.addNewHabit.toggle()
         }
     }
         

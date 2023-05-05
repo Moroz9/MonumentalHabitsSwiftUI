@@ -1,5 +1,5 @@
 //
-//  AddNewHabit.swift
+//  NewHabit.swift
 //  MonumentalHabitsUI
 //
 //  Created by Viktor Morozov on 04.05.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddNewHabit: View {
+struct NewHabit: View {
     @EnvironmentObject var habitModel: HabitViewModel
     @Environment(\.self) var end
     
@@ -106,7 +106,7 @@ struct AddNewHabit: View {
                                 .foregroundColor(Color(hex: 0x573353))
                             Spacer()
                             
-                            notificationVie()
+                            notificationView()
                             
                         }
                         .padding()
@@ -126,6 +126,8 @@ struct AddNewHabit: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             Task {
+                                habitModel.newHabit.toggle()
+                                
                                 if await habitModel.addHabit(context: end.managedObjectContext){
                                     end.dismiss()
                                 }
@@ -201,7 +203,7 @@ struct AddNewHabit: View {
         } ?? 0
     }
     
-    func notificationVie()-> some View {
+    func notificationView()-> some View {
         
         VStack {
             VStack {
@@ -239,18 +241,13 @@ struct AddNewHabit: View {
                             .gesture(
                                 DragGesture().onEnded({ value in
                                     if value.translation.width > 30 {
-                                        //Dark mode
                                         withAnimation(.spring()) {
                                             habitModel.isRemainderOn = false
-                                            //                                            onChangeMode()
                                         }
                                     }
-                                    
                                     if value.translation.width > -30 {
-                                        //Light mode
                                         withAnimation(.spring()) {
                                             habitModel.isRemainderOn = true
-                                            //                                            onChangeMode()
                                         }
                                     }
                                 })
@@ -268,7 +265,7 @@ struct AddNewHabit: View {
 }
 struct AddNewHabit_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewHabit()
+        NewHabit()
             .environmentObject(HabitViewModel())
     }
 }
