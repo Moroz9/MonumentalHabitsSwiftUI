@@ -16,6 +16,9 @@ class HabitViewModel: ObservableObject {
     //NewHabit
     @Published var newHabit: Bool = false
     
+    //Show Calendar
+    @Published var showCalendar: Bool = false
+    
     // MARK: New Habit Properties
     @Published var addNewHabit: Bool = false
     

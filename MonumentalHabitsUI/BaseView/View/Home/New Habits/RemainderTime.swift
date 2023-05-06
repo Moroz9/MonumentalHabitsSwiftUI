@@ -109,10 +109,3 @@ struct RemainderTime: View {
             .cornerRadius (25)
     }
 }
-
-struct RemainderTime_Previews: PreviewProvider {
-    static var previews: some View {
-        NewHabit()
-            .environmentObject(HabitViewModel())
-    }
-}

@@ -24,6 +24,8 @@
 		46A8DC5429FFF1A2005AAA29 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5329FFF1A2005AAA29 /* Home.swift */; };
 		46A8DC5A2A026092005AAA29 /* RemainderTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC592A026092005AAA29 /* RemainderTime.swift */; };
 		46A8DC5C2A02619F005AAA29 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A8DC5B2A02619F005AAA29 /* Reminder.swift */; };
+		46B2EB662A064C3900D2D6E2 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2EB652A064C3900D2D6E2 /* WeekDay.swift */; };
+		46B2EB682A0653AD00D2D6E2 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2EB672A0653AD00D2D6E2 /* DateValue.swift */; };
 		46BE1A762A053C7B007BE1D2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE1A752A053C7B007BE1D2 /* Profile.swift */; };
 		46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BE3D0C29FBEEB200125DDE /* SignUpView.swift */; };
 		46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C70CE129FA88DE006F6047 /* MonumentalHabitsUIApp.swift */; };
@@ -49,6 +51,8 @@
 		46A8DC5329FFF1A2005AAA29 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		46A8DC592A026092005AAA29 /* RemainderTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainderTime.swift; sourceTree = "<group>"; };
 		46A8DC5B2A02619F005AAA29 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		46B2EB652A064C3900D2D6E2 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
+		46B2EB672A0653AD00D2D6E2 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		46BE1A752A053C7B007BE1D2 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		46BE3D0C29FBEEB200125DDE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		46C70CDE29FA88DE006F6047 /* MonumentalHabitsUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonumentalHabitsUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				46A8DC5B2A02619F005AAA29 /* Reminder.swift */,
+				46B2EB652A064C3900D2D6E2 /* WeekDay.swift */,
+				46B2EB672A0653AD00D2D6E2 /* DateValue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +334,7 @@
 			files = (
 				46C70CE429FA88DE006F6047 /* LogInView.swift in Sources */,
 				46BE1A762A053C7B007BE1D2 /* Profile.swift in Sources */,
+				46B2EB662A064C3900D2D6E2 /* WeekDay.swift in Sources */,
 				46A8DC5A2A026092005AAA29 /* RemainderTime.swift in Sources */,
 				469B7B4D2A03DE42003C8D02 /* Persistence.swift in Sources */,
 				46BE3D0D29FBEEB200125DDE /* SignUpView.swift in Sources */,
@@ -337,6 +344,7 @@
 				469BB5B029FC1B8D00CF40CD /* ResetPasswordView.swift in Sources */,
 				46C70CE229FA88DE006F6047 /* MonumentalHabitsUIApp.swift in Sources */,
 				46A8DC5229FFEAE2005AAA29 /* CustomCurveShape.swift in Sources */,
+				46B2EB682A0653AD00D2D6E2 /* DateValue.swift in Sources */,
 				46A8DC4E29FFCEF6005AAA29 /* TabBarView.swift in Sources */,
 				469B7B0B2A03BAB6003C8D02 /* Settings.swift in Sources */,
 				46C70CF029FA9478006F6047 /* Exstension.swift in Sources */,

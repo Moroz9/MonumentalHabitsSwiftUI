@@ -10,6 +10,7 @@ import SwiftUI
 struct NewHabit: View {
     @EnvironmentObject var habitModel: HabitViewModel
     @Environment(\.self) var end
+    @State var currentMonth: Int = 0
     
     var body: some View {
         
@@ -54,7 +55,9 @@ struct NewHabit: View {
                             Spacer()
                             
                             Button {
-                                
+                                withAnimation {
+                                    habitModel.showCalendar.toggle()
+                                }
                             } label: {
                                 Text("Custom")
                                 
@@ -147,7 +150,7 @@ struct NewHabit: View {
                 
                 VStack {
                     Spacer()
-                 
+                    
 //                    RemainderTime(reminder: habitModel.notificationReminder).offset(y: habitModel.showRemainderTime ? 0 : UIScreen.main.bounds .height)
                     
                 }.background ((habitModel.showRemainderTime ? Color.black.opacity (0.3) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
@@ -160,7 +163,7 @@ struct NewHabit: View {
                 
                 VStack {
                     Spacer()
-                 
+                    
                     AddReminderButton(habitModel: _habitModel).offset(y: habitModel.isAddReminder ? 0 : UIScreen.main.bounds .height)
                     
                 }.background ((habitModel.isAddReminder ? Color.black.opacity (0.3) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
@@ -169,10 +172,9 @@ struct NewHabit: View {
                     }
                 })
                 .edgesIgnoringSafeArea(.bottom)
-                
-                
-                
+
             }
+            
         }
         
     }
@@ -180,21 +182,148 @@ struct NewHabit: View {
     @ViewBuilder
     func WeekRow()->some View {
         
-        HStack(spacing: 1) {
+        
+        ZStack {
             
-            ForEach(Calendar.current.currentWeek){weekDay in
-                VStack(spacing: 5) {
-                    Text(weekDay.string.prefix(3))
-                        .foregroundColor(Color(hex: 0x573353))
+            HStack(spacing: 1) {
+
+                ForEach(Calendar.current.currentWeek){weekDay in
+
+                    VStack(spacing: 2) {
+                        Text(weekDay.string.prefix(3))
+                            .foregroundColor(Color(hex: 0x573353))
+
+                        Image("Shape")
+                    }
+
+                }.hAlign(.center)
+                    .padding(.vertical,10)
+                    .background(.white)
+            }
+            .frame(height:
+                habitModel.showCalendar ? 100 : nil )
+            .opacity(
+                habitModel.showCalendar ? 0 : 1)
+            .offset(y: habitModel.showCalendar ? UIScreen.main.bounds.height : 5 )
+
+            VStack {
+                //Days
+                let days: [String] =
+                ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
+                
+                HStack {
+                    // Back
+                    Button(action: { withAnimation {currentMonth -= 1}})
+                    {
+                        Image (systemName: "chevron.left")
+                            .foregroundColor(Color(hex: 0x573353))
+                            .shadow(color: Color(hex: 0x573353), radius: 5)
+                    }
+                    .padding()
+                    //PlaceHolder
+                    Spacer()
+                    VStack {
+                        Text(extraDate()[0])
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                        Text(extraDate()[1])
+                            .font(.title.bold())
+                        
+                    }
+                    //Next
+                    Spacer()
+                    Button(action: {withAnimation { currentMonth += 1 }}) {
+                        Image (systemName: "chevron.right")
+                            .foregroundColor(Color(hex: 0x573353))
+                            .shadow(color: Color(hex: 0x573353), radius: 5)
+                    }
+                    .padding()
+                }
+                
+                // Day view
+                HStack {
                     
+                    ForEach(days,id: \.self){ day in
+                        Text (day)
+                            .font (.callout)
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                    }
+                    
+                }
+                .padding(.vertical,5)
+                
+                // Dates
+                let columns = Array(repeating: GridItem(.flexible()), count: 7)
+                
+                LazyVGrid(columns: columns, spacing: 3 ){
+                    
+                    ForEach(extractDate()){ value in
+                        
+                        CardView(value: value)
+         
+                    }
+                        .padding(4)
+                        .background(Color(hex: 0xFFF3E9))
+                        .cornerRadius(10)
+                }
+            }
+            .padding(10)
+            .frame(height: habitModel.showCalendar ? nil : 0 )
+            .opacity(habitModel.showCalendar ? 1 : 0)
+            .offset(y: withAnimation {
+                habitModel.showCalendar ? 0 : -UIScreen.main.bounds.height
+            })
+            .background(.white)
+            
+            
+        }
+        .onChange(of: currentMonth) { newValue in
+            
+            habitModel.remainderDate = getCurrentMonth()
+        }
+        
+    }
+    
+    func CardView(value: DateValue)->some View {
+        
+        VStack {
+            
+            if value.day != -1 {
+                
+                Text("\(value.day)")
+                    .foregroundColor(Color(hex: 0x573353))
+                
+                Button(action: {}) {
                     Image("Shape")
                 }
-                .hAlign(.center)
-                .padding(5)
-                .background(.white)
+                .padding(.top,-10)
                 
             }
         }
+    }
+        
+    
+    func extraDate()-> [String] {
+        
+        let formatter = DateFormatter ()
+        formatter.dateFormat = "YYYY MMMM"
+        
+        let date = formatter.string( from: habitModel.remainderDate)
+        
+        return date.components (separatedBy: " ")
+    }
+    
+    
+    func getCurrentMonth()-> Date {
+        
+        let calendar = Calendar.current
+        
+        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth, to: Date()) else {
+            return Date()
+            
+        }
+        return currentMonth
     }
     
     func getIndex(item: Reminder)-> Int {
@@ -262,8 +391,34 @@ struct NewHabit: View {
             }
         }
     }
+    
+    func extractDate()-> [DateValue] {
+        
+        let calendar = Calendar.current
+        
+        let currentMonth = getCurrentMonth()
+        
+        var days = currentMonth.getAllDates().compactMap { date -> DateValue in
+            
+            let day = calendar.component(.day, from: date)
+            
+            return DateValue(day: day, date: date)
+        }
+        
+        // adding offset days to get exact week day...
+        let firstWeekday = calendar.component(.weekday, from: days.first?.date ?? Date ())
+        
+        for _ in 0..<firstWeekday - 1 {
+            days.insert(DateValue (day: -1, date: Date()), at: 0)
+        }
+        return days
+        
+    }
+    
 }
-struct AddNewHabit_Previews: PreviewProvider {
+
+
+struct NewHabit_Previews: PreviewProvider {
     static var previews: some View {
         NewHabit()
             .environmentObject(HabitViewModel())
@@ -281,6 +436,7 @@ extension View {
     }
     
 }
+
 extension Calendar {
     var currentWeek : [WeekDay] {
         guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else {return []}
@@ -293,12 +449,5 @@ extension Calendar {
             }
         }
         return week
-    }
-    
-    struct WeekDay: Identifiable {
-        var id: UUID = .init()
-        var string: String
-        var date: Date
-        var isToday: Bool = false
     }
 }
