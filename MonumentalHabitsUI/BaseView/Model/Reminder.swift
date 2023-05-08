@@ -10,5 +10,5 @@ import SwiftUI
 struct Reminder: Identifiable {
     var id = UUID().uuidString
     var title: String
-    var isOn: Bool
+    var isOn: Bool = true
 }

@@ -109,7 +109,7 @@ struct NewHabit: View {
                                 .foregroundColor(Color(hex: 0x573353))
                             Spacer()
                             
-                            notificationView()
+                            notificationViewToggle()
                             
                         }
                         .padding()
@@ -140,7 +140,7 @@ struct NewHabit: View {
                             Image("IconsBack")
                         }
                         .disabled(!habitModel.doneStatus())
-                        .opacity(habitModel.doneStatus() ? 1 : 0.6)
+                        .opacity(habitModel.doneStatus() ? 1 : 0.2)
                     }
                     
                     
@@ -150,9 +150,9 @@ struct NewHabit: View {
                 
                 VStack {
                     Spacer()
-                    
-//                    RemainderTime(reminder: habitModel.notificationReminder).offset(y: habitModel.showRemainderTime ? 0 : UIScreen.main.bounds .height)
-                    
+                  
+                    RemainderTime(reminder: $habitModel.notificationReminder).offset(y: habitModel.showRemainderTime ? 0 : UIScreen.main.bounds .height)
+            
                 }.background ((habitModel.showRemainderTime ? Color.black.opacity (0.3) : Color.clear).edgesIgnoringSafeArea(.all).onTapGesture {
                     withAnimation {
                         habitModel.showRemainderTime.toggle()
@@ -193,7 +193,11 @@ struct NewHabit: View {
                         Text(weekDay.string.prefix(3))
                             .foregroundColor(Color(hex: 0x573353))
 
-                        Image("Shape")
+                        Rectangle()
+                             .frame(width: 35,height: 35)
+                             .cornerRadius(10)
+                             .foregroundColor(Color(habitModel.habitColor))
+                     
                     }
 
                 }.hAlign(.center)
@@ -206,6 +210,7 @@ struct NewHabit: View {
                 habitModel.showCalendar ? 0 : 1)
             .offset(y: habitModel.showCalendar ? UIScreen.main.bounds.height : 5 )
 
+            
             VStack {
                 //Days
                 let days: [String] =
@@ -267,6 +272,34 @@ struct NewHabit: View {
                         .background(Color(hex: 0xFFF3E9))
                         .cornerRadius(10)
                 }
+                
+                // Colors view
+          
+                HStack(spacing: 5) {
+                    ForEach(1...6, id: \.self) { id in
+                        let color = "Color \(id)"
+
+                        Circle()
+                        .foregroundColor(Color(color))
+                        .frame(width: 25, height: 25)
+                        .overlay(content: {
+                            if  color == habitModel.habitColor{
+                                Image(systemName: "checkmark")
+                                .font(.caption.bold())
+                            }
+                        })
+
+                        .contentShape(Circle())
+                        .onTapGesture {
+                            withAnimation {
+                                habitModel.habitColor = color
+                            }
+                        }
+                    }
+
+                }
+                
+                
             }
             .padding(10)
             .frame(height: habitModel.showCalendar ? nil : 0 )
@@ -285,6 +318,7 @@ struct NewHabit: View {
         
     }
     
+    // View Calendar
     func CardView(value: DateValue)->some View {
         
         VStack {
@@ -295,7 +329,10 @@ struct NewHabit: View {
                     .foregroundColor(Color(hex: 0x573353))
                 
                 Button(action: {}) {
-                    Image("Shape")
+                    Rectangle()
+                        .frame(width: 35,height: 35)
+                        .cornerRadius(10)
+                        .foregroundColor(Color(habitModel.habitColor))
                 }
                 .padding(.top,-10)
                 
@@ -303,7 +340,6 @@ struct NewHabit: View {
         }
     }
         
-    
     func extraDate()-> [String] {
         
         let formatter = DateFormatter ()
@@ -313,7 +349,6 @@ struct NewHabit: View {
         
         return date.components (separatedBy: " ")
     }
-    
     
     func getCurrentMonth()-> Date {
         
@@ -332,7 +367,8 @@ struct NewHabit: View {
         } ?? 0
     }
     
-    func notificationView()-> some View {
+    //Notification Toggle
+    func notificationViewToggle()-> some View {
         
         VStack {
             VStack {
@@ -364,7 +400,6 @@ struct NewHabit: View {
                             .onTapGesture {
                                 withAnimation(.spring()) {
                                     habitModel.isRemainderOn = !habitModel.isRemainderOn
-                                    //                                    onChangeMode()
                                 }
                             }
                             .gesture(

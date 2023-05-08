@@ -69,21 +69,66 @@ struct Home: View {
                     .cornerRadius(15)
                     .padding(.horizontal)
                     .padding(.top)
-                    
-                    ForEach(habits){ habit in
-                        habitCardView(habit: habit)
-                    }
-                    
+            
                 }
                 
+                // PlaceHolder Habits
+                HStack {
+                    
+                    Text("HABITS")
+                    
+                    Spacer()
+                    // MARK: Displaying Current Week and Marking Active Dates of Habit
+                    let calendar = Calendar.current
+                    let currentWeek = calendar.dateInterval(of: .weekOfMonth, for: Date())
+                    let symbols = calendar.weekdaySymbols
+                    let startDate = currentWeek?.start ?? Date()
+                    let activeWeekDays = habitModel.weekDays
+                    let activePlot = symbols.indices.compactMap { index -> (String, Date) in
+                        let currentDate = calendar.date (byAdding: .day, value: index, to: startDate)
+                        return (symbols [index], currentDate!)
+                    }
+                    HStack(spacing: 3) {
+                        ForEach(activePlot.indices,id: \.self) { index in
+                            let item = activePlot[index]
+                            
+                            VStack(spacing: 0) {
+                                Text (item.0.prefix(3))
+                                    .font(.system(size: 10))
+                                
+                                let status = activeWeekDays.contains { day in
+                                    return day == item.0
+                                    
+                                }
+                                
+                                Text(getDate (date: item.1))
+                                    .font(.system(size: 16))
+                                    . fontWeight(.semibold)
+                                    
+                            }
+                        }
+                        .hAlign(.center)
+                         .frame(width: 40,height: 50)
+                             .background {
+                                 Color(.white)
+                             }
+                             .cornerRadius(10)
+                    }
+                  
+
+
+                }
+                .padding(.leading, 20)
+                
+                
+                // Habits
                 ForEach(habits){ habit in
                     habitCardView(habit: habit)
                 }
                 
-                
-              
             }
             .background(Image("Background"),alignment: .bottom)
+            .background(Color(hex: 0xFFF3E9))
             .sheet(isPresented: $habitModel.addNewHabit){
                 habitModel.resetData()
             } content: {
@@ -107,7 +152,7 @@ struct Home: View {
    
         HStack {
             
-            Text("HABITS")
+            Text(habit.title ?? "Habits")
             
             // MARK: Displaying Current Week and Marking Active Dates of Habit
             let calendar = Calendar.current
@@ -116,35 +161,43 @@ struct Home: View {
             let startDate = currentWeek?.start ?? Date()
             let activeWeekDays = habit.weekDays ?? []
             let activePlot = symbols.indices.compactMap { index -> (String, Date) in
-                let currentDate = calendar.date (byAdding: .day, value: index, to:
-                                                    startDate)
+                let currentDate = calendar.date (byAdding: .day, value: index, to: startDate)
                 return (symbols [index], currentDate!)
             }
-            HStack(spacing: 0) {
+            Spacer()
+            HStack(spacing: 3) {
                 ForEach(activePlot.indices,id: \.self) { index in
                     let item = activePlot[index]
                     
                     VStack(spacing: 6) {
-                        Text (item.0.prefix(3))
-                        
-                        let status = activeWeekDays.contains { day in
-                            return day == item.0
-                            
-                        }
-                        
-                        Text(getDate (date: item.1))
-                            .font(.system(size: 14))
-                            . fontWeight(.semibold)
-                            .padding(8)
-                            .background {
-                                Circle ()
-                                    .fill(Color (habit.color ?? "Card-1"))
-                                    .opacity (status ? 1 : 0)
-                            }
+//                        Text (item.0.prefix(3))
+//
+//                        let status = activeWeekDays.contains { day in
+//                            return day == item.0
+//
+//                        }
+//
+//                        Text(getDate (date: item.1))
+//                            .font(.system(size: 14))
+//                            . fontWeight(.semibold)
+//                            .padding(8)
+//                            .background {
+//                                Circle ()
+//                                    .fill(Color (habit.color ?? "Color 1"))
+//                                    .opacity (status ? 1 : 0)
+//                            }
                     }
+                    .frame(width: 40,height: 50)
+                        .background {
+                            Color(habitModel.habitColor)
+                        }
+                        .cornerRadius(10)
+                    
                 }
             }
+            
         }
+        .padding(.leading, 20)
         .onTapGesture {
             // MARK: Editing Habit
             habitModel.editHabit = habit

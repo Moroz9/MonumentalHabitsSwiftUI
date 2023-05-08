@@ -56,6 +56,7 @@ struct TabBarView: View {
                         .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: 5)
                         .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: -5)
                         .offset(y: -30)
+                        
                 }
                 .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: 5)
                 .shadow(color: Color(hex: 0xFC9D45).opacity(0.3), radius: 5,x: 0,y: -5)

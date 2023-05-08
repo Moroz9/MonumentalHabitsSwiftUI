@@ -23,13 +23,12 @@ class HabitViewModel: ObservableObject {
     @Published var addNewHabit: Bool = false
     
     @Published var title: String = ""
-    @Published var habitColor: String = "Yellow"
+    @Published var habitColor: String = "Color 1"
     @Published var weekDays: [String] = []
-    @Published var isRemainderOn: Bool = false
-    @Published var remainderText: String = ""
+    @Published var isRemainderOn: Bool = true
     @Published var remainderDate: Date = Date()
     
-    @Published var notificationReminder: [Reminder] = [Reminder(title: "", isOn: true)]
+    @Published var notificationReminder: [Reminder] = []
     
     // MARK: Remainder Time Picker
     @Published var showRemainderTime: Bool = false
@@ -45,7 +44,6 @@ class HabitViewModel: ObservableObject {
         habit.color = habitColor
         habit.weekDays = weekDays
         habit.isReminderOn = isRemainderOn
-        habit.reminderText = remainderText
         habit.notificationDate = remainderDate
         habit.notificationDs = []
         
@@ -72,7 +70,6 @@ class HabitViewModel: ObservableObject {
     func scheduleNotification()async throws-> [String] {
         let content = UNMutableNotificationContent()
         content.title = "Habit Remainder"
-        content.subtitle = remainderText
         content.sound = UNNotificationSound.default
         
         // Scheduled Ids
@@ -121,7 +118,6 @@ class HabitViewModel: ObservableObject {
         weekDays = []
         isAddReminder = false
         remainderDate = Date()
-        remainderText = ""
         editHabit = nil
     }
     
@@ -133,15 +129,13 @@ class HabitViewModel: ObservableObject {
             weekDays = editHabit .weekDays ?? []
             isRemainderOn = editHabit.isReminderOn
             remainderDate = editHabit.notificationDate ?? Date()
-            remainderText = editHabit.reminderText ?? ""
         }
     }
     
-    
+//    weekDays.isEmpty 
     // MARK: Done Button Status
     func doneStatus()-> Bool {
-        let remainderStatus = isRemainderOn ? remainderText == "" : false
-        if title == "" || weekDays.isEmpty || remainderStatus {
+        if title == ""  {
             return false
         }
         return true
