@@ -37,9 +37,34 @@ class HabitViewModel: ObservableObject {
     // MARK: Editing Habit
     @Published var editHabit: Habit?
     
+    // MARK: Notification Access Status
+    
+    @Published var notificationAccess: Bool = false
+    
+    init() {
+        requestNotificationAccess()
+    }
+    
+    func requestNotificationAccess() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert]) { status, _ in
+            DispatchQueue.main.async {
+                self.notificationAccess = status
+            }
+        }
+    }
+    
+    
     // MARK: Adding Habit to Database
     func addHabit (context: NSManagedObjectContext)async-> Bool {
-        let habit = Habit (context: context)
+        // MARK: Editing Data
+        var habit: Habit!
+        if let editHabit = editHabit {
+            habit = editHabit
+            // Removing All Pending Notifications
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: editHabit.notificationDs ?? [])
+        } else {
+         habit = Habit (context: context)
+        }
         habit.title = title
         habit.color = habitColor
         habit.weekDays = weekDays
@@ -50,7 +75,7 @@ class HabitViewModel: ObservableObject {
         if isRemainderOn {
             // MARK: Scheduling Notifications
             
-            if let ids = try? await scheduleNotification (){
+            if let ids = try? await scheduleNotification() {
                 habit.notificationDs = ids
                 
                 if let _ = try? context.save() {
@@ -91,7 +116,7 @@ class HabitViewModel: ObservableObject {
             // MARK: Since Week Day Starts from 1-7
             // Thus Adding +1 to Index
             if day != -1 {
-                var components = DateComponents ( )
+                var components = DateComponents()
                 components.hour = hour
                 components.minute = min
                 components.weekday = day + 1
@@ -121,8 +146,24 @@ class HabitViewModel: ObservableObject {
         editHabit = nil
     }
     
+    // MARK: Deleting Habit From Database
+    func deleteHabit (content: NSManagedObjectContext)-> Bool {
+        
+        if let editHabit = editHabit {
+            if editHabit.isReminderOn {
+                // Removing All Pending Notifications
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: editHabit.notificationDs ?? [])
+            }
+            content.delete(editHabit)
+            if let _ = try? content.save (){
+                return true
+            }
+        }
+        return false
+    }
+    
     // MARK: Restoring Edit Data
-    func restoreEditData(){
+    func restoreEditData() {
         if let editHabit = editHabit {
             title = editHabit.title ?? ""
             habitColor = editHabit.color ?? "Card-1"

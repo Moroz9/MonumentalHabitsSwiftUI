@@ -99,7 +99,7 @@ struct NewHabit: View {
                         .cornerRadius(10)
                         .frame(height: habitModel.isRemainderOn ? 0 : nil)
                         .opacity(habitModel.isRemainderOn ? 0 : 1)
-                        
+                        .opacity(habitModel.notificationAccess ? 1 : 0)
                         
                         //Notification
                         HStack {
@@ -112,6 +112,7 @@ struct NewHabit: View {
                             notificationViewToggle()
                             
                         }
+                        .opacity(habitModel.notificationAccess ? 1 : 0)
                         .padding()
                         .background(.white)
                         .cornerRadius(10)
@@ -123,24 +124,37 @@ struct NewHabit: View {
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding()
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationTitle ("New Habit")
+                .navigationTitle (habitModel.editHabit != nil ? "Edit Habit" : "New Habit")
                 .toolbar{
-                    
+                    //Back
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {end.dismiss()}) {
+                            Image("IconsBack")
+                        }
+                    }
+                    // Trash
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
+                            
+                            if habitModel.deleteHabit(content: end.managedObjectContext){
+                                end.dismiss()
+                            }
+                        }) {
+                            Image(systemName: "trash")
+                        }
+                        .disabled(!habitModel.doneStatus())
+                        .opacity(habitModel.editHabit == nil ? 0 : 1)
+                    }
+                    //Done
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Done") {
                             Task {
-                                habitModel.newHabit.toggle()
-                                
                                 if await habitModel.addHabit(context: end.managedObjectContext){
                                     end.dismiss()
                                 }
                             }
-                            
-                        }) {
-                            Image("IconsBack")
-                        }
-                        .disabled(!habitModel.doneStatus())
-                        .opacity(habitModel.doneStatus() ? 1 : 0.2)
+                        }.disabled(!habitModel.doneStatus())
+                            .opacity(habitModel.doneStatus() ? 1 : 0.2)
                     }
                     
                     

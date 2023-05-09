@@ -98,13 +98,10 @@ struct Home: View {
                                 
                                 let status = activeWeekDays.contains { day in
                                     return day == item.0
-                                    
                                 }
-                                
                                 Text(getDate (date: item.1))
                                     .font(.system(size: 16))
                                     . fontWeight(.semibold)
-                                    
                             }
                         }
                         .hAlign(.center)
@@ -114,17 +111,14 @@ struct Home: View {
                              }
                              .cornerRadius(10)
                     }
-                  
-
-
                 }
                 .padding(.leading, 20)
                 
-                
-                // Habits
-                ForEach(habits){ habit in
-                    habitCardView(habit: habit)
-                }
+           
+                    // Habits
+                    ForEach(habits){ habit in
+                        habitCardView(habit: habit)
+                    }
                 
             }
             .background(Image("Background"),alignment: .bottom)
@@ -205,8 +199,6 @@ struct Home: View {
             habitModel.addNewHabit.toggle()
         }
     }
-        
-    
     
     // MARK: Formatting Date
     func getDate (date: Date)-> String {
@@ -215,7 +207,6 @@ struct Home: View {
         
         return formatter.string(from: date)
     }
-    
 }
 
 // Extending View To Get Screen Frame
@@ -224,6 +215,7 @@ extension View {
         return UIScreen.main.bounds
     }
 }
+
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
