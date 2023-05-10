@@ -23,15 +23,16 @@ class HabitViewModel: ObservableObject {
     @Published var addNewHabit: Bool = false
     
     @Published var title: String = ""
-    @Published var habitColor: String = "Color 1"
+    @Published var habitColor: String = "Color 3"
     @Published var weekDays: [String] = []
-    @Published var isRemainderOn: Bool = true
+    @Published var isRemainderOn: Bool = false
     @Published var remainderDate: Date = Date()
     
     @Published var notificationReminder: [Reminder] = []
     
     // MARK: Remainder Time Picker
     @Published var showRemainderTime: Bool = false
+    @Published var showRemainderTime2: Bool = false
     @Published var isAddReminder: Bool = false
     
     // MARK: Editing Habit
@@ -95,6 +96,7 @@ class HabitViewModel: ObservableObject {
     func scheduleNotification()async throws-> [String] {
         let content = UNMutableNotificationContent()
         content.title = "Habit Remainder"
+        content.subtitle = title
         content.sound = UNNotificationSound.default
         
         // Scheduled Ids
@@ -108,7 +110,7 @@ class HabitViewModel: ObservableObject {
             // UNIQUE ID FOR EACH NOTIFICATION
             let id = UUID().uuidString
             let hour = calendar.component(.hour, from: remainderDate)
-            let min = calendar.component (.minute, from: remainderDate)
+            let min = calendar.component(.minute, from: remainderDate)
             let day = weekdaySymbols.firstIndex { currentDay in
                 return currentDay == weekDay
             } ?? -1
@@ -120,13 +122,14 @@ class HabitViewModel: ObservableObject {
                 components.hour = hour
                 components.minute = min
                 components.weekday = day + 1
+                
                 // MARK: Thus this will Trigger Notification on Each Selected Day
                 let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
                 
                 // MARK: Notification Request
                 let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
                 
-                try await UNUserNotificationCenter.current () .add (request)
+                try await UNUserNotificationCenter.current().add(request)
                 
                 //I ADDING ID
                 notificationIDs.append(id)
@@ -166,8 +169,8 @@ class HabitViewModel: ObservableObject {
     func restoreEditData() {
         if let editHabit = editHabit {
             title = editHabit.title ?? ""
-            habitColor = editHabit.color ?? "Card-1"
-            weekDays = editHabit .weekDays ?? []
+            habitColor = editHabit.color ?? "Color 1"
+            weekDays = editHabit.weekDays ?? []
             isRemainderOn = editHabit.isReminderOn
             remainderDate = editHabit.notificationDate ?? Date()
         }
@@ -176,7 +179,8 @@ class HabitViewModel: ObservableObject {
 //    weekDays.isEmpty 
     // MARK: Done Button Status
     func doneStatus()-> Bool {
-        if title == ""  {
+        
+        if title == "" || weekDays.isEmpty {
             return false
         }
         return true

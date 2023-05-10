@@ -123,11 +123,12 @@ struct Home: View {
             }
             .background(Image("Background"),alignment: .bottom)
             .background(Color(hex: 0xFFF3E9))
-            .sheet(isPresented: $habitModel.addNewHabit){
+            .fullScreenCover(isPresented: $habitModel.addNewHabit) {
                 habitModel.resetData()
             } content: {
                 NewHabit()
                     .environmentObject(habitModel)
+                    
             }
             
             VStack {
@@ -144,9 +145,14 @@ struct Home: View {
     @ViewBuilder
     func habitCardView(habit: Habit)->some View {
    
-        HStack {
-            
+        HStack(spacing: 5) {
+           
             Text(habit.title ?? "Habits")
+                .font(.system(size: 10).bold())
+                .frame(width: 35,height: 45)
+                .padding(.vertical,10)
+                .padding(.horizontal)
+                .background(.white).cornerRadius(10)
             
             // MARK: Displaying Current Week and Marking Active Dates of Habit
             let calendar = Calendar.current
@@ -158,19 +164,26 @@ struct Home: View {
                 let currentDate = calendar.date (byAdding: .day, value: index, to: startDate)
                 return (symbols [index], currentDate!)
             }
-            Spacer()
+            
+           
             HStack(spacing: 3) {
                 ForEach(activePlot.indices,id: \.self) { index in
                     let item = activePlot[index]
                     
                     VStack(spacing: 6) {
 //                        Text (item.0.prefix(3))
-//
-//                        let status = activeWeekDays.contains { day in
-//                            return day == item.0
-//
-//                        }
-//
+
+                        let status = activeWeekDays.contains { day in
+                            return day == item.0
+
+                        }
+
+                        Rectangle()
+                            .frame(width: 38,height: 45)
+                            .cornerRadius(10)
+                            .foregroundColor(Color(habit.color ?? "Color 1"))
+                            .opacity (status ? 1 : 0)
+                        
 //                        Text(getDate (date: item.1))
 //                            .font(.system(size: 14))
 //                            . fontWeight(.semibold)
@@ -178,20 +191,17 @@ struct Home: View {
 //                            .background {
 //                                Circle ()
 //                                    .fill(Color (habit.color ?? "Color 1"))
-//                                    .opacity (status ? 1 : 0)
+//
 //                            }
                     }
-                    .frame(width: 40,height: 50)
-                        .background {
-                            Color(habitModel.habitColor)
-                        }
-                        .cornerRadius(10)
                     
                 }
             }
+            .padding(.vertical, 10)
+            .padding(.leading,10)
+            .background(.white).cornerRadius(10)
             
         }
-        .padding(.leading, 20)
         .onTapGesture {
             // MARK: Editing Habit
             habitModel.editHabit = habit

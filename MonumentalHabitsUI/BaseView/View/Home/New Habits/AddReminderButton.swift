@@ -17,8 +17,8 @@ struct AddReminderButton: View {
             HStack {
                 Button(action: {
                     withAnimation {
-                        habitModel.showRemainderTime.toggle()
-                        habitModel.isAddReminder.toggle()
+//                        habitModel.showRemainderTime.toggle()
+//                        habitModel.isAddReminder.toggle()
                     }
                 }) {
                     Text("Cansel")
@@ -30,11 +30,11 @@ struct AddReminderButton: View {
                 Spacer()
                 Button(action: {
                     withAnimation {
-                        habitModel.showRemainderTime.toggle()
+//                        habitModel.showRemainderTime.toggle()
                         
                         addReminder()
                         
-                        habitModel.isAddReminder.toggle()
+//                        habitModel.isAddReminder.toggle()
                     }
                 }) {
                     Text("Save")

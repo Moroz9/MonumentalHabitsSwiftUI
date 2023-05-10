@@ -11,6 +11,7 @@ struct NewHabit: View {
     @EnvironmentObject var habitModel: HabitViewModel
     @Environment(\.self) var end
     @State var currentMonth: Int = 0
+    @State var currentImage: Int = 1
     
     var body: some View {
         
@@ -85,7 +86,8 @@ struct NewHabit: View {
                             Spacer()
                             Button {
                                 withAnimation {
-                                    habitModel.showRemainderTime.toggle()
+                                    
+                                    habitModel.showRemainderTime2.toggle()
                                 }
                             } label: {
                                 Text("\(habitModel.remainderDate.formatted(date: .omitted, time: .shortened))")
@@ -97,9 +99,9 @@ struct NewHabit: View {
                         .padding()
                         .background(.white)
                         .cornerRadius(10)
-                        .frame(height: habitModel.isRemainderOn ? 0 : nil)
-                        .opacity(habitModel.isRemainderOn ? 0 : 1)
-                        .opacity(habitModel.notificationAccess ? 1 : 0)
+                        .frame(height: habitModel.isRemainderOn ? nil : 0)
+                        .opacity(habitModel.isRemainderOn ? 1 : 0)
+//                        .opacity(habitModel.notificationAccess ? 1 : 0)
                         
                         //Notification
                         HStack {
@@ -112,7 +114,7 @@ struct NewHabit: View {
                             notificationViewToggle()
                             
                         }
-                        .opacity(habitModel.notificationAccess ? 1 : 0)
+//                        .opacity(habitModel.notificationAccess ? 1 : 0)
                         .padding()
                         .background(.white)
                         .cornerRadius(10)
@@ -141,7 +143,7 @@ struct NewHabit: View {
                             }
                         }) {
                             Image(systemName: "trash")
-                        }
+                        }.tint(.red)
                         .disabled(!habitModel.doneStatus())
                         .opacity(habitModel.editHabit == nil ? 0 : 1)
                     }
@@ -149,12 +151,15 @@ struct NewHabit: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
                             Task {
+                                
                                 if await habitModel.addHabit(context: end.managedObjectContext){
                                     end.dismiss()
                                 }
+                                
                             }
-                        }.disabled(!habitModel.doneStatus())
-                            .opacity(habitModel.doneStatus() ? 1 : 0.2)
+                        }.tint(Color(hex: 0x573353))
+                        .disabled(!habitModel.doneStatus())
+                        .opacity(habitModel.doneStatus() ? 1 : 0.2)
                     }
                     
                     
@@ -190,7 +195,25 @@ struct NewHabit: View {
             }
             
         }
-        
+        .overlay {
+            if habitModel.showRemainderTime2 {
+                ZStack{
+                    
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation {
+                                habitModel.showRemainderTime2.toggle()
+                            }
+                        }
+                    DatePicker.init("", selection:
+                                        $habitModel.remainderDate, displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                }
+            }
+        }
     }
     
     @ViewBuilder
@@ -199,18 +222,33 @@ struct NewHabit: View {
         
         ZStack {
             
+            
             HStack(spacing: 1) {
-
-                ForEach(Calendar.current.currentWeek){weekDay in
+                let weekDays = Calendar.current.weekdaySymbols
+                ForEach(weekDays, id: \.self){ weekDay in
 
                     VStack(spacing: 2) {
-                        Text(weekDay.string.prefix(3))
+                        let index = habitModel.weekDays.firstIndex { value in
+                            return value == weekDay
+                        } ?? -1
+                        
+                        
+                        Text(weekDay.prefix(3))
                             .foregroundColor(Color(hex: 0x573353))
-
+                            
                         Rectangle()
                              .frame(width: 35,height: 35)
                              .cornerRadius(10)
-                             .foregroundColor(Color(habitModel.habitColor))
+                             .onTapGesture {
+                                 withAnimation {
+                                     if index != -1 {
+                                         habitModel.weekDays.remove(at: index)
+                                     } else {
+                                         habitModel.weekDays.append(weekDay)
+                                     }
+                                 }
+                             }
+                             .foregroundColor(index != -1 ? Color(habitModel.habitColor) : Color(hex: 0xFC9D45, opacity: 0.3))
                      
                     }
 
@@ -281,8 +319,7 @@ struct NewHabit: View {
                         
                         CardView(value: value)
          
-                    }
-                        .padding(4)
+                    }.padding(4)
                         .background(Color(hex: 0xFFF3E9))
                         .cornerRadius(10)
                 }
@@ -336,17 +373,37 @@ struct NewHabit: View {
     func CardView(value: DateValue)->some View {
         
         VStack {
-            
+
             if value.day != -1 {
                 
                 Text("\(value.day)")
                     .foregroundColor(Color(hex: 0x573353))
                 
-                Button(action: {}) {
-                    Rectangle()
-                        .frame(width: 35,height: 35)
-                        .cornerRadius(10)
-                        .foregroundColor(Color(habitModel.habitColor))
+                Button(action: {
+                    if currentImage < 3 {
+                        self.currentImage += 1
+                    }
+                    else { self.currentImage = 1}
+                }) {
+                    
+                    
+                    if currentImage == 1 {
+                        Rectangle()
+                            .frame(width: 35,height: 35)
+                            .cornerRadius(10)
+                            .foregroundColor(Color(habitModel.habitColor).opacity(0.1))
+                           
+                    }
+                    if currentImage == 2 {
+                        Image("Square 2")
+                            
+                    }
+                    if currentImage == 3 {
+                        Rectangle()
+                            .frame(width: 35,height: 35)
+                            .cornerRadius(10)
+                            .foregroundColor(Color(habitModel.habitColor))
+                    }
                 }
                 .padding(.top,-10)
                 
@@ -390,7 +447,7 @@ struct NewHabit: View {
                 ZStack {
                     //Background
                     Capsule()
-                        .fill(habitModel.isRemainderOn ? Color(hex: 0x573353).opacity(0.3) : Color(hex: 0xFDA758).opacity(0.3))
+                        .fill(habitModel.isRemainderOn ? Color(hex: 0xFDA758).opacity(0.3) : Color(hex: 0x573353).opacity(0.3))
                         .frame(width: 55,height: 34)
                     Text("on")
                         .font(.system(size: 12))
@@ -404,11 +461,11 @@ struct NewHabit: View {
                     
                     HStack {
                         
-                        if !habitModel.isRemainderOn {
+                        if habitModel.isRemainderOn {
                             Spacer()
                         }
                         Circle()
-                            .fill(habitModel.isRemainderOn ? Color(hex: 0x573353) :Color(hex: 0xFDA758 ))
+                            .fill(habitModel.isRemainderOn ? Color(hex: 0xFDA758) :Color(hex: 0x573353))
                             .frame(width: 30,height: 25)
                             .padding(.horizontal,3)
                             .onTapGesture {
@@ -430,7 +487,7 @@ struct NewHabit: View {
                                     }
                                 })
                             )
-                        if habitModel.isRemainderOn {
+                        if !habitModel.isRemainderOn {
                             
                             Spacer()
                         }
@@ -486,17 +543,17 @@ extension View {
     
 }
 
-extension Calendar {
-    var currentWeek : [WeekDay] {
-        guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else {return []}
-        var week: [WeekDay] = []
-        for index in 0..<7 {
-            if let day = self.date(bySetting: .day, value: index, of: firstWeekDay) {
-                let weekDaySymbol: String = day.toString("EEEE")
-                let isToday = self.isDateInToday(day)
-                week.append(.init(string: weekDaySymbol, date: day))
-            }
-        }
-        return week
-    }
-}
+//extension Calendar {
+//    var currentWeek : [WeekDay] {
+//        guard let firstWeekDay = self.dateInterval(of: .weekOfMonth, for: Date())?.start else {return []}
+//        var week: [WeekDay] = []
+//        for index in 0..<7 {
+//            if let day = self.date(bySetting: .day, value: index, of: firstWeekDay) {
+//                let weekDaySymbol: String = day.toString("EEEE")
+//                let isToday = self.isDateInToday(day)
+//                week.append(.init(string: weekDaySymbol, date: day))
+//            }
+//        }
+//        return week
+//    }
+//}
