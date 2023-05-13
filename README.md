@@ -49,8 +49,8 @@
 
 
 <p float="left">
- <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/6181983a-6e0d-450a-8b4d-48f1dbea6f92" width="20%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/a9f3d2a1-bbca-4b4e-b44b-f8f8a0000fb7" width="20%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/d3e5a05a-7dc6-4bcd-80ee-736194f1ab62" width="20%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/7c421fec-099a-43e0-8909-2576cfef4248" width="20%" />
+ <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/6181983a-6e0d-450a-8b4d-48f1dbea6f92" width="22%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/a9f3d2a1-bbca-4b4e-b44b-f8f8a0000fb7" width="22%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/d3e5a05a-7dc6-4bcd-80ee-736194f1ab62" width="22%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/7c421fec-099a-43e0-8909-2576cfef4248" width="22%" />
 </p>
