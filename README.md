@@ -4,8 +4,9 @@
   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/d32b58a0-294b-490c-a49d-49c9b58dff55" />
 </p>
 
-# Исользуемый стек
-- Испозуется : Firebase, CoreData
+# Испозуется стек
+- Firebase
+- CoreData
 - SwiftUI
 - MVVM
 
