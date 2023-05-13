@@ -9,12 +9,12 @@
 - MVVM
 - Firebase
 - CoreData
-- Push notifications
+- Push Notifications
 
 
 ## 
 
-### Sign up and Log in
+### Sign Up and Log In
 
 - Стартовый экран - авторизация. 
 - Второй экран - регистрация.
@@ -32,7 +32,7 @@
 
 - Главный экран - отображение созданных хобби, сортировка по дате. 
 - Настройки - настройки профиля.
-- Custom Tab bar - переключение между вкладками.
+- Custom Tab Bar - переключение между вкладками.
 
 <p float="left">
   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/65bc6630-b003-419b-8cf6-0bdc9d0d02dc" width="33%" />
