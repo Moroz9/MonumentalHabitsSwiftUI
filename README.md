@@ -1,4 +1,4 @@
-# MonumentalHabitsSwiftUI
+# Monumental Habits SwiftUI
 
 <p float="left">
   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/1e24c25b-c058-4e45-9aca-d8e3691d3448" />
