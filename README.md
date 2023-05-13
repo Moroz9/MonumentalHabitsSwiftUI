@@ -21,9 +21,9 @@
 - Третий экран - восстановление пароля с уведомлением на почту, и обновлением пароля учетной записи.
 
 <p float="left">
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/982725c9-90b4-4460-8929-19a1d7d5769c" width="30%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/1cbeaa71-f47d-490f-92c3-37a2e4e63ca7" width="30%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/38380d77-f90a-4caf-bd4a-74f96fc93927" width="30%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/78fa7eb3-f50c-4374-bd25-b012d9b7b7e3" width="30%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/ea12f697-3915-4006-bb79-e79ebd00ad41" width="30%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/b6152c9e-b1ed-4ae6-8cc6-d1a63abbc5b6" width="30%" />
 </p>
 
 ## 
@@ -35,8 +35,8 @@
 - Custom Tab Bar - переключение между вкладками.
 
 <p float="left">
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/65bc6630-b003-419b-8cf6-0bdc9d0d02dc" width="33%" />
-   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/c88ee6c8-cac1-4f02-88c6-b2bc72c32505" width="33%" />
+   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/36b419ab-ac35-40ed-b77c-9f64ce41a8bc" width="33%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/55cb111c-7534-4ab7-83e4-fbdbe253d413" width="33%" />
 </p>
 
 ## 
@@ -50,8 +50,8 @@
 
 
 <p float="left">
- <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/6181983a-6e0d-450a-8b4d-48f1dbea6f92" width="30%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/a9f3d2a1-bbca-4b4e-b44b-f8f8a0000fb7" width="30%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/d3e5a05a-7dc6-4bcd-80ee-736194f1ab62" width="30%" />
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/7c421fec-099a-43e0-8909-2576cfef4248" width="30%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/9182ffeb-6952-41f8-a335-f4a4f0503de4" width="30%" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/9645fdf3-bf64-409e-9246-7a1ef8b44313" width="30%" />
+   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/8ed3086f-0feb-4e11-9d45-0487f8b055ad" width="30%" />
+   <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/a7ce82df-4ae0-4634-822f-04ef8092dd88" width="30%" />
 </p>
