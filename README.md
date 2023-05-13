@@ -1,7 +1,7 @@
 # Monumental Habits 
 
 <p float="left">
-  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/1e24c25b-c058-4e45-9aca-d8e3691d3448" />
+  <img src="https://github.com/Moroz9/MonumentalHabitsSwiftUI/assets/126159245/d32b58a0-294b-490c-a49d-49c9b58dff55" />
 </p>
 
 # Исользуемый стек
