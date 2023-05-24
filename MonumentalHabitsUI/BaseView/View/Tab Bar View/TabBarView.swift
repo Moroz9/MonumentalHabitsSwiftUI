@@ -12,7 +12,6 @@ struct TabBarView: View {
     
     // isHidden Tab Bar
     init(){
-        
         UITabBar.appearance().isHidden = true
     }
     

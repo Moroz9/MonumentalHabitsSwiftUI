@@ -127,7 +127,7 @@ struct NewHabit: View {
                 .padding()
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle (habitModel.editHabit != nil ? "Edit Habit" : "New Habit")
-                .toolbar{
+                .toolbar {
                     //Back
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {end.dismiss()}) {

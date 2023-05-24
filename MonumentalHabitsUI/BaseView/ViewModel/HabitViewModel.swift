@@ -95,7 +95,7 @@ class HabitViewModel: ObservableObject {
     // MARK: Adding Notifications
     func scheduleNotification()async throws-> [String] {
         let content = UNMutableNotificationContent()
-        content.title = "Habit Remainder"
+        content.title = "Monumental Habits"
         content.subtitle = title
         content.sound = UNNotificationSound.default
         
